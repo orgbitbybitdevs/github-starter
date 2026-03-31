@@ -11,7 +11,7 @@ Learn how to properly set up Git and GitHub, including SSH keys, commit signing,
 
 ## 🛠️ Prerequisites
 - Basic terminal usage
-- Git installed
+- A free GitHub account
 
 ## 🏁 Getting started
 Follow the guides in order:
