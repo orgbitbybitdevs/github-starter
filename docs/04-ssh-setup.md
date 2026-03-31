@@ -1,7 +1,7 @@
 # 🔐 Setup SSH Authentication
 
 ***
-| [⬅️ Previous: Commit Signing](04-commit-signing.md) | [Next: Create or Clone a Repository ➡️](06-create-clone-repo.md) |
+| [⬅️ Previous: Configure Identity](03-configure-identity.md) | [Next: Commit Signing ➡️](05-commit-signing.md) |
 | :--- | ---: |
 ***
 
@@ -42,5 +42,5 @@ ssh -T git@github.com
 If it replies with `Hi [username]! You've successfully authenticated...`, your VIP badge works perfectly!
 
 ***
-| [⬅️ Previous: Commit Signing](04-commit-signing.md) | [Next: Create or Clone a Repository ➡️](06-create-clone-repo.md) |
+| [⬅️ Previous: Configure Identity](03-configure-identity.md) | [Next: Commit Signing ➡️](05-commit-signing.md) |
 | :--- | ---: |

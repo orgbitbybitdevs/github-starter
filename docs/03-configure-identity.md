@@ -1,7 +1,7 @@
 # 🏷️ Configure your Git identity
 
 ***
-| [⬅️ Previous: Install Git](02-install-git.md) | [Next: Commit Signing ➡️](04-commit-signing.md) |
+| [⬅️ Previous: Install Git](02-install-git.md) | [Next: Setup SSH ➡️](04-ssh-setup.md) |
 | :--- | ---: |
 ***
 

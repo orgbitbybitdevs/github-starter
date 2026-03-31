@@ -1,7 +1,7 @@
 # 🖋️ Commit Signing
 
 ***
-| [⬅️ Previous: Configure Identity](03-configure-identity.md) | [Next: Setup SSH ➡️](05-ssh-setup.md) |
+| [⬅️ Previous: Setup SSH](04-ssh-setup.md) | [Next: Create or Clone a Repository ➡️](06-create-clone-repo.md) |
 | :--- | ---: |
 ***
 
@@ -25,9 +25,9 @@ sequenceDiagram
 ```
 
 ## 📅 When to use it
-Set this up right after you finish creating your SSH Key (we will do that in the very next module). Once your key is ready, you tell Git to sign *every* snapshot you take.
+Set this up right after you finish creating your SSH Key (we did that in the previous module). Once your key is ready, you tell Git to sign *every* snapshot you take.
 
-*(After you finish the next module to get your SSH key, come back and run this:)*
+*(Run these commands using the SSH key you just created:)*
 
 ```bash
 git config --global gpg.format ssh
@@ -39,5 +39,5 @@ git config --global commit.gpgsign true
 The easiest way to verify is to push some code to your repository on github.com. Look at your history: if you see a green **"Verified"** pill next to your snapshot, you are a certified Git pro!
 
 ***
-| [⬅️ Previous: Configure Identity](03-configure-identity.md) | [Next: Setup SSH ➡️](05-ssh-setup.md) |
+| [⬅️ Previous: Setup SSH](04-ssh-setup.md) | [Next: Create or Clone a Repository ➡️](06-create-clone-repo.md) |
 | :--- | ---: |
