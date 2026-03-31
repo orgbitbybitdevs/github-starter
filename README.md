@@ -1,19 +1,19 @@
-# Git Starter
+# 🚀 Git Starter
 
 Learn how to properly set up Git and GitHub, including SSH keys, commit signing, and repository fundamentals.
 
-## What you will learn
+## 🎯 What you will learn
 - Configure Git identity (name & email)
 - Sign your commits
 - Generate and use SSH keys
 - Create, clone, and fork repositories
 - Understand origin and upstream
 
-## Prerequisites
+## 🛠️ Prerequisites
 - Basic terminal usage
 - Git installed
 
-## Getting started
+## 🏁 Getting started
 Follow the guides in order:
 
 1. [docs/01-introduction.md](docs/01-introduction.md)
@@ -25,5 +25,5 @@ Follow the guides in order:
 7. [docs/07-fork-origin-upstream.md](docs/07-fork-origin-upstream.md)
 8. [docs/08-final-checklist.md](docs/08-final-checklist.md)
 
-## Final goal
+## 🏆 Final goal
 By the end of this guide, you will have a fully configured and professional Git environment.

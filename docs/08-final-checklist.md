@@ -1,4 +1,4 @@
-# Final Checklist
+# 🎉 Final Checklist
 
 You should now feel totally confident checking off these boxes, and know exactly why each one is important:
 

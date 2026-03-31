@@ -1,12 +1,12 @@
-# Install Git
+# 💻 Install Git
 
-## What it does
+## ⚙️ What it does
 This step tells your computer how to speak the "Git" language. By installing it, your terminal (the command line) will be able to understand the commands we will use throughout this guide.
 
-## Why it exists
+## 🧠 Why it exists
 Git doesn't come pre-installed on every computer. Because it's a tool primarily built for software developers, you have to download and install the engine so it runs seamlessly in the background.
 
-## When to use it
+## 📅 When to use it
 If you run `git --version` in your terminal right now and get an error saying "command not found," you need to complete this installation step.
 
 ### Windows
@@ -36,7 +36,7 @@ If you use a RedHat-based distribution, use the DNF package manager instead:
 sudo dnf install git -y
 ```
 
-## How to verify
+## ✅ How to verify
 
 Once the installation finishes, close your terminal completely and open a **new** one. Then type:
 ```bash

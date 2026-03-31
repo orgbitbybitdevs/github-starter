@@ -1,6 +1,6 @@
-# Setup SSH Authentication
+# 🔐 Setup SSH Authentication
 
-## What it does
+## ⚙️ What it does
 Imagine going to a very strict office building every day. Instead of forcing you to write down your password every time you walk through the door, the security guard gives you a unique VIP badge that unlocks the gate automatically. That VIP badge is an **SSH Key**.
 
 ```mermaid
@@ -8,10 +8,10 @@ graph LR
     A[Your Laptop\n(Private ID Card)] -- "Magically unlocks" --> B((GitHub\nHas a picture of your ID))
 ```
 
-## Why it exists
+## 🧠 Why it exists
 In the past, you had to type your GitHub password every single time you tried to upload code. This was terribly annoying and potentially unsafe if someone was looking over your shoulder. GitHub solved this friction by using "Public-Key Cryptography." You generate two keys that fit together perfectly: one stays securely hidden on your laptop, and you give the other one to GitHub. 
 
-## When to use it
+## 📅 When to use it
 You only have to generate a VIP badge **once** per laptop! As soon as you install Git, setting this up makes your life a hundred times easier.
 
 **Step 1: Create your VIP Badge**
@@ -27,7 +27,7 @@ cat ~/.ssh/id_ed25519.pub
 ```
 Copy everything the terminal spits out (it should start with `ssh-ed25519`). Then, go to your **GitHub Account > Settings > SSH and GPG keys**, click **New SSH key**, and paste it there!
 
-## How to verify
+## ✅ How to verify
 
 To check if the security guard recognizes you, ask Git to test the connection:
 ```bash

@@ -1,5 +1,5 @@
-## What did you learn?
+## 🧠 What did you learn?
 
-## What was difficult?
+## 🚧 What was difficult?
 
-## What did you improve?
+## 🎉 What did you improve?

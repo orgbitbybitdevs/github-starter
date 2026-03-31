@@ -1,6 +1,6 @@
-# Understand Fork, Origin, and Upstream
+# 🔀 Understand Fork, Origin, and Upstream
 
-## What it does
+## ⚙️ What it does
 Imagine GitHub is a giant public sandbox where people build incredible sandcastles. A **Fork** is simply a feature that lets you copy their sandcastle into your *own personal sandbox*. This means you can play with the code, edit it, and learn from it—without accidentally breaking the real thing!
 
 ```mermaid
@@ -16,10 +16,10 @@ graph LR
     end
 ```
 
-## Why it exists
+## 🧠 Why it exists
 When you work on massive Open Source projects (like making a game or a tool with hundreds of strangers), the creators don't want to give you permission to edit their official code right away. Instead, they ask you to Fork it, make your changes over in your personal sandbox, and then submit a **Pull Request**—which basically asks playfully, "Hey! Look what I built! Do you want to pull this into your official project?" 
 
-## When to use it
+## 📅 When to use it
 
 Whenever somebody says "you can't push directly to my code," use the Fork workflow:
 
@@ -33,7 +33,7 @@ git clone git@github.com:your-username/the-forked-repo.git
 git remote add upstream git@github.com:original-creator/the-repo.git
 ```
 
-## How to verify
+## ✅ How to verify
 
 Let's check if your sandbox is connected correctly to both the internet and the original upstream source:
 
