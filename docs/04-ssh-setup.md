@@ -10,7 +10,7 @@ Imagine going to a very strict office building every day. Instead of forcing you
 
 ```mermaid
 graph LR
-    A[Your Laptop\n(Private ID Card)] -- "Magically unlocks" --> B((GitHub\nHas a picture of your ID))
+    A["Your Laptop<br/>(Private ID Card)"] -- "Magically unlocks" --> B(("GitHub<br/>Has a picture of your ID"))
 ```
 
 ## 🧠 Why it exists

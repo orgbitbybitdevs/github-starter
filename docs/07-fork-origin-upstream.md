@@ -11,13 +11,13 @@ Imagine GitHub is a giant public sandbox where people build incredible sandcastl
 ```mermaid
 graph LR
     subgraph The Main Project Sandbox
-        A[Original Repo\n(Upstream)]
+        A["Original Repo<br/>(Upstream)"]
     end
     subgraph Your Personal Sandbox
-        A -- "Fork (Copy on GitHub)" --> B[Your Clone\n(Origin)]
-        B -- "Download via SSH" --> C[Your Laptop]
+        A -- "Fork (Copy on GitHub)" --> B["Your Clone<br/>(Origin)"]
+        B -- "Download via SSH" --> C["Your Laptop"]
         C -- "Upload Changes" --> B
-        B -. "Pull Request" .-> A
+        B -.->|"Pull Request"| A
     end
 ```
 
