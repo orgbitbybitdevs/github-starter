@@ -10,7 +10,9 @@ This setup acts like a "Name Tag" for your code. Whenever you take a snapshot of
 
 ```mermaid
 graph LR
-    A[Your Code] + B[Your Name] + C[Your Email] --> D[(Git Commit Snapshot)]
+    A[Your Code] --> D[(Git Commit Snapshot)]
+    B[Your Name] --> D
+    C[Your Email] --> D
 ```
 
 ## 🧠 Why it exists
