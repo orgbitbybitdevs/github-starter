@@ -1,34 +1,47 @@
 # 🖋️ Commit Signing
 
 ***
-| [⬅️ Previous: Setup SSH](04-ssh-setup.md) | [Next: Create or Clone a Repository ➡️](06-create-clone-repo.md) |
+| [⬅️ Previous: Setup SSH](04-ssh-setup.md) | [Next: Your First Commit ➡️](06-first-commit.md) |
 | :--- | ---: |
 ***
 
+**🎯 Learning Objective:** You will apply cryptographic SSH signatures to your commits. Understand the difference between pushing code securely vs explicitly signing who wrote it to earn the trusted **"Verified"** badge.
+
 ## ⚙️ What it does
-Commit signing is like putting a wax seal on a letter. It proves to everyone that the letter actually came from you and hasn't been tampered with. On GitHub, it gives your code a shiny, green **"Verified"** badge!
+Commit signing attaches a cryptographic "Wax Seal" to every revision you author. It undeniably proves that the payload (`commit`) hasn't been tampered with and originated precisely from you. 
 
 ## 🧠 Why it exists
-Remember the "Name Tag" we set up in the last step? Anyone could technically configure their Git to use *your* email and pretend to be you. 
-Signing your commits uses an un-fakeable digital fingerprint (your SSH key) to say, "Yes, these changes were authentically made by me."
+Remember the "Name Tag" from module 03? A rogue programmer can modify their Git configuration to use your email and push fake commits pretending to be you. 
+Signing uses the private key stored safely on your laptop to cryptographically sign the metadata, fully securing the collaboration supply chain.
 
 ```mermaid
 sequenceDiagram
-    participant You as Your Computer
+    participant You as Git (Your Laptop)
     participant GitHub
     
     You->>Your Code: Save snapshot (Commit)
-    Note over You: Git attaches your secret<br/>wax seal (SSH Signature)
-    You->>GitHub: Upload the signed code
-    GitHub-->>GitHub: Checks the seal against<br/>your public profile
+    Note over You: Git attaches your un-fakeable<br/>SSH Signature 
+    You->>GitHub: Synchronize to Remote
+    GitHub-->>GitHub: Decrypts metadata against your<br/>public "Signing Key"
     Note over GitHub: Green "Verified" Badge<br/>Appears!
 ```
 
+> [!WARNING]
+> **Technical requirement:** SSH commit signatures explicitly compel a local Git binary of **`2.34+`** or higher. Run `git --version` to ensure compatibility.
+
 ## 📅 When to use it
-Set this up right after you finish creating your SSH Key (we did that in the previous module). Once your key is ready, you tell Git to sign *every* snapshot you take.
+We will configure Git to sign **every** snapshot using the same SSH key pair we generated previously for authentication. 
 
-*(Run these commands using the SSH key you just created:)*
+### Step 1: Register the Key as a Signing Key
+Before GitHub can analyze your seals, you must re-upload the public key, explicitly tagged for signing.
 
+1. Recall your public key to the clipboard: `cat ~/.ssh/id_ed25519.pub`
+2. Navigate to **GitHub > Settings > SSH and GPG keys**.
+3. Click **New SSH key**.
+4. This time, under **"Key type"**, explicitly select **Signing Key**. Paste the payload and save.
+
+### Step 2: Configure Global Git Signatures
+*(Execute these locally to enforce signing globally!)*
 ```bash
 git config --global gpg.format ssh
 git config --global user.signingkey ~/.ssh/id_ed25519.pub
@@ -36,8 +49,8 @@ git config --global commit.gpgsign true
 ```
 
 ## ✅ How to verify
-The easiest way to verify is to push some code to your repository on github.com. Look at your history: if you see a green **"Verified"** pill next to your snapshot, you are a certified Git pro!
+Once we create our first repository in the next module and push it online, inspect your commit history via the GitHub UI. A green **"Verified"** pill confirms the entire architectural chain works flawlessly.
 
 ***
-| [⬅️ Previous: Setup SSH](04-ssh-setup.md) | [Next: Create or Clone a Repository ➡️](06-create-clone-repo.md) |
+| [⬅️ Previous: Setup SSH](04-ssh-setup.md) | [Next: Your First Commit ➡️](06-first-commit.md) |
 | :--- | ---: |

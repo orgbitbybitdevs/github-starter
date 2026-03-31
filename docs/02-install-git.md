@@ -5,49 +5,53 @@
 | :--- | ---: |
 ***
 
+**🎯 Learning Objective:** You will install the core Git binaries and configure your first professional convention: setting default repositories to initialize using the `main` branch.
+
 ## ⚙️ What it does
-This step tells your computer how to speak the "Git" language. By installing it, your terminal (the command line) will be able to understand the commands we will use throughout this guide.
+This step downloads the core Git engine, ensuring your `Terminal` can parse and execute version control CLI commands.
 
 ## 🧠 Why it exists
-Git doesn't come pre-installed on every computer. Because it's a tool primarily built for software developers, you have to download and install the engine so it runs seamlessly in the background.
+Git must be locally compiled or installed to track revisions on your personal machine. It acts identically whether your project ever connects to the internet or stays completely offline.
 
 ## 📅 When to use it
-If you run `git --version` in your terminal right now and get an error saying "command not found," you need to complete this installation step.
+If you run `git --version` in your terminal and get an error (e.g., `command not found`), proceed below.
 
 ### Windows
-The easiest way is to download the installer directly:
 1. Go to [Git for Windows](https://git-scm.com/download/win).
-2. Download the installer and run it. Keep clicking "Next" to accept all the default settings (they are perfect for beginners).
+2. Download the installer. Keep clicking "Next" to accept all the default settings (they are perfect for developers).
 
 ### macOS
-Mac makes it very easy! Open your Terminal app and type:
+Open your Terminal app and type:
 ```bash
 git --version
 ```
-If Git isn't installed, your Mac will automatically pop up a window asking if you want to install the "Command Line Developer Tools." Click "Install" and follow the prompts.
+If Git isn't installed, a native window will ask to install the "Command Line Developer Tools." Click "Install".
 
-*(Alternative for advanced users: run `brew install git` if you use Homebrew).*
-
-### Linux (Ubuntu/Debian)
-Open your terminal and use the default Debian package manager:
+### Linux (Ubuntu/Debian/Fedora)
+For Debian architectures:
 ```bash
 sudo apt update
 sudo apt install git -y
 ```
-
-### Linux (Fedora/RHEL/CentOS)
-If you use a RedHat-based distribution, use the DNF package manager instead:
+For RHEL/Fedora architectures:
 ```bash
 sudo dnf install git -y
 ```
 
+## 🛠️ Professional Convention: Branch naming
+Historically, Git named the default "trunk" branch `master`. The industry has modernized to use `main`. Run this strictly once to configure your future local repositories professionally:
+
+```bash
+git config --global init.defaultBranch main
+```
+
 ## ✅ How to verify
 
-Once the installation finishes, close your terminal completely and open a **new** one. Then type:
+Spin up a **new** terminal session to ensure the binaries loaded into your `PATH`, and type:
 ```bash
 git --version
 ```
-If you see something like `git version 2.43.0`, congratulations! Your computer now speaks Git.
+If you see a version output, your environment is ready!
 
 ***
 | [⬅️ Previous: Introduction](01-introduction.md) | [Next: Configure your Git identity ➡️](03-configure-identity.md) |

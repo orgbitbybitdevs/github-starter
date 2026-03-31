@@ -5,41 +5,58 @@
 | :--- | ---: |
 ***
 
+**🎯 Learning Objective:** Learn how Public-Key Cryptography secures your connection to remote servers. You will generate an `ed25519` key pair, load it into your `ssh-agent`, and register it as an **Authentication Key** in GitHub.
+
 ## ⚙️ What it does
-Imagine going to a very strict office building every day. Instead of forcing you to write down your password every time you walk through the door, the security guard gives you a unique VIP badge that unlocks the gate automatically. That VIP badge is an **SSH Key**.
+Imagine needing a highly secure VIP badge to push code. You generate a paired cryptographic sequence: one key stays hidden on your local machine (`Private Key`), and you safely upload the other piece to the remote platform (`Public Key`).
 
 ```mermaid
 graph LR
-    A["Your Laptop<br/>(Private ID Card)"] -- "Magically unlocks" --> B(("GitHub<br/>Has a picture of your ID"))
+    A["Your Laptop<br/>(Private Key)"] -- "Authenticates" --> B(("GitHub<br/>(Public Key Registry)"))
 ```
 
 ## 🧠 Why it exists
-In the past, you had to type your GitHub password every single time you tried to upload code. This was terribly annoying and potentially unsafe if someone was looking over your shoulder. GitHub solved this friction by using "Public-Key Cryptography." You generate two keys that fit together perfectly: one stays securely hidden on your laptop, and you give the other one to GitHub. 
+Historically, you had to type your GitHub account password into the terminal for every `git push`. GitHub permanently deprecated password authentication in favor of Personal Access Tokens (PATs) and SSH Keys to prevent credential leakage. 
+
+> [!TIP]
+> **Teacher Note: Why ed25519?** We strictly recommend the `ed25519` cryptographic algorithm instead of older `RSA`. It compiles instantly, uses fewer bits, and relies on an elliptic curve mathematically engineered to resist modern attack vectors.
 
 ## 📅 When to use it
-You only have to generate a VIP badge **once** per laptop! As soon as you install Git, setting this up makes your life a hundred times easier.
+You execute this sequence **once** per OS installation on a new machine.
 
-**Step 1: Create your VIP Badge**
+### Step 1: Generate the Key Pair
 ```bash
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
-Press **Enter** to accept the default file location when it asks. You can just hit **Enter** again twice if you don't want to type a local password for the file.
+Press **Enter** to accept the default output path (`~/.ssh/id_ed25519`). Press **Enter** again to skip the optional passphrase (unless preferred).
 
-**Step 2: Give GitHub a picture of your Badge**
-We need to copy the public half of your badge so GitHub knows what to look for when your laptop connects. To print the code out in your terminal:
+### Step 2: Empower the SSH Agent
+For your system to seamlessly fetch the key without prompting you in the background, you must start the native `ssh-agent` utility and securely load your newly generated private key into its memory:
+```bash
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+```
+
+### Step 3: Register the Public Key (Authentication)
+We must extract the un-secret half of your badge (`id_ed25519.pub`) and upload it to GitHub as an **Authentication** key.
+
+1. Print the public payload in your terminal:
 ```bash
 cat ~/.ssh/id_ed25519.pub
 ```
-Copy everything the terminal spits out (it should start with `ssh-ed25519`). Then, go to your **GitHub Account > Settings > SSH and GPG keys**, click **New SSH key**, and paste it there!
+2. Copy the entire string (starts with `ssh-ed25519`).
+3. Navigate to **GitHub > Settings > SSH and GPG keys**.
+4. Click **New SSH key**. 
+5. Under **"Key type"**, explicitly ensure **Authentication Key** is selected. Paste the payload and save.
 
 ## ✅ How to verify
 
-To check if the security guard recognizes you, ask Git to test the connection:
+Command your terminal to attempt an interactive Secure Shell handshake against GitHub's root node:
 ```bash
 ssh -T git@github.com
 ```
 
-If it replies with `Hi [username]! You've successfully authenticated...`, your VIP badge works perfectly!
+If it successfully replies `Hi [username]! You've successfully authenticated...`, your identity is correctly mapped!
 
 ***
 | [⬅️ Previous: Configure Identity](03-configure-identity.md) | [Next: Commit Signing ➡️](05-commit-signing.md) |
