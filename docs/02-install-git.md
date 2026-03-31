@@ -1,5 +1,10 @@
 # 💻 Install Git
 
+***
+| [⬅️ Previous: Introduction](01-introduction.md) | [Next: Configure your Git identity ➡️](03-configure-identity.md) |
+| :--- | ---: |
+***
+
 ## ⚙️ What it does
 This step tells your computer how to speak the "Git" language. By installing it, your terminal (the command line) will be able to understand the commands we will use throughout this guide.
 
@@ -43,3 +48,7 @@ Once the installation finishes, close your terminal completely and open a **new*
 git --version
 ```
 If you see something like `git version 2.43.0`, congratulations! Your computer now speaks Git.
+
+***
+| [⬅️ Previous: Introduction](01-introduction.md) | [Next: Configure your Git identity ➡️](03-configure-identity.md) |
+| :--- | ---: |

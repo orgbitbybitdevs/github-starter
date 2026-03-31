@@ -1,5 +1,10 @@
 # 🖋️ Commit Signing
 
+***
+| [⬅️ Previous: Configure Identity](03-configure-identity.md) | [Next: Setup SSH ➡️](05-ssh-setup.md) |
+| :--- | ---: |
+***
+
 ## ⚙️ What it does
 Commit signing is like putting a wax seal on a letter. It proves to everyone that the letter actually came from you and hasn't been tampered with. On GitHub, it gives your code a shiny, green **"Verified"** badge!
 
@@ -32,3 +37,7 @@ git config --global commit.gpgsign true
 
 ## ✅ How to verify
 The easiest way to verify is to push some code to your repository on github.com. Look at your history: if you see a green **"Verified"** pill next to your snapshot, you are a certified Git pro!
+
+***
+| [⬅️ Previous: Configure Identity](03-configure-identity.md) | [Next: Setup SSH ➡️](05-ssh-setup.md) |
+| :--- | ---: |

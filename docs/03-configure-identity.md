@@ -1,5 +1,10 @@
 # 🏷️ Configure your Git identity
 
+***
+| [⬅️ Previous: Install Git](02-install-git.md) | [Next: Commit Signing ➡️](04-commit-signing.md) |
+| :--- | ---: |
+***
+
 ## ⚙️ What it does
 This setup acts like a "Name Tag" for your code. Whenever you take a snapshot of your project (called a "commit"), Git permanently attaches your name and email to that snapshot so everyone knows you wrote it.
 
@@ -31,3 +36,7 @@ Let's ask Git to read back our Name Tag to make sure it saved properly:
 git config --global --list
 ```
 Look through the text that pops up. If you see your name and email, you are perfectly configured.
+
+***
+| [⬅️ Previous: Install Git](02-install-git.md) | [Next: Commit Signing ➡️](04-commit-signing.md) |
+| :--- | ---: |

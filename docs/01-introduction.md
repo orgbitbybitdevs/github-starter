@@ -1,5 +1,10 @@
 # 🕰️ Introduction to Git and Version Control
 
+***
+| [Next: Install Git ➡️](02-install-git.md) |
+| :---: |
+***
+
 ## ⚙️ What it does
 Think of Git as a "time machine" for your code. It's a tool that takes a snapshot of your project exactly as it looks at a certain moment in time. If you make a mistake later, you can easily use Git to travel back to a working snapshot.
 
@@ -26,3 +31,7 @@ Once we configure Git in the upcoming lessons, you will verify your environment 
 git --version
 ```
 If your terminal replies back with a version number, your time machine is ready to go!
+
+***
+| [Next: Install Git ➡️](02-install-git.md) |
+| :---: |

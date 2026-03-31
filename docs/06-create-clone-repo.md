@@ -1,5 +1,10 @@
 # 📂 Create or Clone a Repository
 
+***
+| [⬅️ Previous: Setup SSH Authentication](05-ssh-setup.md) | [Next: Fork, Origin & Upstream ➡️](07-fork-origin-upstream.md) |
+| :--- | ---: |
+***
+
 ## ⚙️ What it does
 This is how you get your project's folders and files onto your actual computer. 
 - **Create (`init`)** magically transforms an empty, boring folder on your laptop into a Git-powered project.
@@ -42,3 +47,7 @@ If you downloaded an existing project (`clone`):
 ls -la
 ```
 Open the folder you downloaded and look around. You should see all the project files, plus that hidden `.git` folder waiting quietly to do its job!
+
+***
+| [⬅️ Previous: Setup SSH Authentication](05-ssh-setup.md) | [Next: Fork, Origin & Upstream ➡️](07-fork-origin-upstream.md) |
+| :--- | ---: |

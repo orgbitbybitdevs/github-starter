@@ -1,5 +1,10 @@
 # 🔀 Understand Fork, Origin, and Upstream
 
+***
+| [⬅️ Previous: Create or Clone Repo](06-create-clone-repo.md) | [Next: Final Checklist ➡️](08-final-checklist.md) |
+| :--- | ---: |
+***
+
 ## ⚙️ What it does
 Imagine GitHub is a giant public sandbox where people build incredible sandcastles. A **Fork** is simply a feature that lets you copy their sandcastle into your *own personal sandbox*. This means you can play with the code, edit it, and learn from it—without accidentally breaking the real thing!
 
@@ -42,3 +47,7 @@ git remote -v
 ```
 
 If it worked, the terminal will show you two different locations: your copy (`origin`) and the original owner's copy (`upstream`)!
+
+***
+| [⬅️ Previous: Create or Clone Repo](06-create-clone-repo.md) | [Next: Final Checklist ➡️](08-final-checklist.md) |
+| :--- | ---: |

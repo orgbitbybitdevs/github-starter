@@ -1,5 +1,10 @@
 # 🔐 Setup SSH Authentication
 
+***
+| [⬅️ Previous: Commit Signing](04-commit-signing.md) | [Next: Create or Clone a Repository ➡️](06-create-clone-repo.md) |
+| :--- | ---: |
+***
+
 ## ⚙️ What it does
 Imagine going to a very strict office building every day. Instead of forcing you to write down your password every time you walk through the door, the security guard gives you a unique VIP badge that unlocks the gate automatically. That VIP badge is an **SSH Key**.
 
@@ -35,3 +40,7 @@ ssh -T git@github.com
 ```
 
 If it replies with `Hi [username]! You've successfully authenticated...`, your VIP badge works perfectly!
+
+***
+| [⬅️ Previous: Commit Signing](04-commit-signing.md) | [Next: Create or Clone a Repository ➡️](06-create-clone-repo.md) |
+| :--- | ---: |
