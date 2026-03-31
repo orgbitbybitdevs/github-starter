@@ -5,50 +5,54 @@
 | :---: |
 ***
 
-**🎯 Learning Objective:** Combine all 9 previous modules into a solitary, fluent workflow. By passing this guided exam, you formally demonstrate professional operational capacity traversing your Git architecture.
+**🎯 Learning Objective:** Combine all previous modules into the standard GitHub Flow. By completing this evaluation, you will demonstrate your ability to create a branch, stage files, secure your commits, and open a Pull Request subject to automated grading.
 
 ## 📝 The Challenge
-Your objective is to generate irrefutable, observable evidence on GitHub that your terminal correctly maps your native signature and SSH metadata upward. Follow the instructions verbatim. Do not skip cryptographic execution loops.
+Your objective is to execute a standard **GitHub Flow**. Do not push your changes directly to the `main` branch. 
 
-### Step 1: Instantiate a Sandbox Repository On-Platform
-1. Open your native web `Browser` and authenticate into GitHub natively.
-2. Initialize a blank project locally titled `git-professional-certification`.
-3. Check **"Add a README file"** strictly so GitHub initializes the target master-ledger internally.
-
-### Step 2: Traverse Architecture (Clone & Local Modification)
-1. Pull your newly architected environment locally utilizing your `SSH payload`:
+### Step 1: Create a Branch
+1. From the root directory of this repository, create a new branch. Replace `[username]` with your actual GitHub username:
    ```bash
-   git clone git@github.com:your-username/git-professional-certification.git
-   cd git-professional-certification
-   ```
-2. Alter the payload to insert your explicit signature:
-   ```bash
-   echo "I have mastered the Git CLI Architecture loop natively." >> README.md
+   git switch -c feature/evaluation-[username]
    ```
 
-### Step 3: Local Workflow Engine (`add`, `commit`)
-1. Push the altered metadata exactly to the internal Staging Environment (`index`):
+### Step 2: Modify the Working Tree
+1. Create a `students/` directory and add a new text file to it:
    ```bash
-   git add README.md
-   ```
-2. Cement exactly your signature using a rigorous native commit structure:
-   ```bash
-   git commit -m "docs: formally completed certification sequence"
+   mkdir -p students
+   echo "I have completed the Git and GitHub starter course." > students/[username].md
    ```
 
-### Step 4: The Final Push
-Deploy the signed, immutable snapshot upward targeting the cloud node structurally:
+### Step 3: Stage and Commit (`add` & `commit`)
+1. Move your new file to the Staging area (Index) so Git tracks it:
+   ```bash
+   git add students/
+   ```
+2. Save your changes into the repository history with a clear commit message:
+   ```bash
+   git commit -m "docs: submit final evaluation file"
+   ```
+
+### Step 4: Push to Remote (`push`)
+Upload your new branch to the GitHub remote repository:
 ```bash
-git push origin main
+git push -u origin feature/evaluation-[username]
 ```
 
-## ✅ Final Verification (The "Verified" Evidence)
-**Navigate directly back to GitHub.** Refresh your `git-professional-certification` repository architecture natively.
-Inspect the commits ledge. Does your target snapshot cleanly display the **green "Verified" badge** structurally?
+### Step 5: Open a Pull Request
+1. Open your web browser and navigate to this repository on GitHub.
+2. GitHub will display a yellow banner showing your recent push. Click **"Compare & pull request"**.
+3. Ensure the base branch is `main` and the compare branch is your new `feature/...` branch. 
+4. Click **"Create pull request"**.
 
-If so, **Congratulations!** 🎉
+## ✅ Automated Autograding
+This repository uses GitHub Actions for autograding. When you open your Pull Request, our bot will automatically run a script to verify:
+1. You worked on a new branch, not `main`.
+2. You successfully added a file to the `students/` folder.
 
-Your `ed25519` cryptographic authentication mapped perfectly, your global `user.name` signature injected correctly, and you deployed an entire loop successfully. You are officially certified to utilize Git professionally!
+If your Pull Request passes the checks, you will see a green checkmark ✅. Finally, check your commit on the GitHub UI to ensure it displays the green **"Verified"** badge confirming your SSH signature is working.
+
+Congratulations! We look forward to seeing your Pull Request.
 
 ***
 | [⬅️ Previous: Troubleshooting](09-troubleshooting.md) |

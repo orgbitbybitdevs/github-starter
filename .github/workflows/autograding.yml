@@ -1,0 +1,20 @@
+name: GitHub Flow Evaluation
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  grade:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Run Autograding Script
+        run: bash scripts/grade-pr.sh
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+          BASE_REF: ${{ github.base_ref }}

@@ -5,48 +5,48 @@
 | :--- | ---: |
 ***
 
-**🎯 Learning Objective:** Provide a master engineering checklist to resolve the most consistently encountered Git infrastructure failures immediately.
+**🎯 Learning Objective:** Provide a standardized, professional checklist to resolve the most consistently encountered Git configuration, authentication, and SSH errors.
 
-When debugging Git failures natively, scan these resolutions prior to posting an issue.
+When encountering native Git errors during push operations, systematically verify the following before escalating requests.
 
 ## 🚨 SSH Authentication Failed
 
 ### Error: `Permission denied (publickey)`
-**The Issue:** GitHub rejected your Secure Shell handshake. The uploaded public key failed cryptographic verification against your local machine's `ssh-agent`.
+**The Issue:** GitHub rejected your SSH connection because the uploaded public key on your account fails to match the private key evaluating locally in your `ssh-agent`.
 
 **Resolutions:**
-1. Check if the agent is natively running and holds your mapped payload:
+1. Check if the SSH agent is actively executing and securely loaded your key:
    ```bash
    ssh-add -l
    ```
-   *If it says "The agent has no identities", you skipped restarting the memory chain. Execute:*
+   *If the terminal returns "The agent has no identities", you must reload the process:*
    ```bash
    eval "$(ssh-agent -s)"
    ssh-add ~/.ssh/id_ed25519
    ```
 
-2. Confirm you copied the `Authentication Key` distinctly instead of appending it. Overwriting existing keys structurally invalidates previous architectures. Do not execute `ssh-keygen` redundantly! Re-add the existing file.
+2. Confirm you explicitly designated the uploaded GitHub key as an **Authentication Key**. Do not generate redundant pairs using `ssh-keygen` continuously; simply re-add the existing `.ssh` public file to GitHub.
 
-## 🚨 Commit Authentication Fails
+## 🚨 Commit Verification Fails
 
 ### Error: Commit displays gray "Unverified"
-**The Issue:** Your author identity configuration string failed to rigidly map against your GitHub platform email securely. Or you failed to select "Signing Key".
+**The Issue:** Your author identity configuration (`user.email`) mathematically mismatched the email validated on your GitHub account, OR you failed to configure your second SSH key expressly as a "Signing Key".
 
 **Resolutions:**
-1. Dump your global configuration string securely:
+1. Verify global environment metadata:
    ```bash
    git config --global --list
    ```
-   *Verify `user.email` aligns perfectly structurally with the primary email assigned directly to your GitHub Settings > Emails page!*
-2. Verify you instantiated **TWO separate keys** via the GitHub UI using your identical local payload. One explicitly locked as *Authentication Key*, one explicitly locked as *Signing Key*.
+   *Verify `user.email` aligns perfectly structurally with the primary email assigned directly to your GitHub Settings > Emails page.*
+2. Verify you instantiated **two separate keys** via the GitHub UI using your identical local payload (`.pub` file). One explicitly locked as *Authentication Key*, one explicitly locked as *Signing Key*.
 
 ## 🚨 Push Failures 
 
 ### Error: `Support for password authentication was removed. Please use a personal access token instead.`
-**The Issue:** You accidentally cloned the repository utilizing GitHub's legacy HTTPS schema, avoiding your newly integrated `ed25519` architecture bypass.
+**The Issue:** You explicitly cloned the repository utilizing GitHub's legacy HTTPS schema, rather than the cryptographically secure SSH protocol.
 
 **Resolution:**
-Migrate the `origin` alias natively from HTTPS securely to SSH structural framing:
+Migrate the isolated `origin` alias natively from HTTPS securely to SSH:
 ```bash
 git remote set-url origin git@github.com:username/repo.git
 ```
