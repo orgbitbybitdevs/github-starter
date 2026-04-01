@@ -8,7 +8,9 @@ If you only read one section before doing anything, read this one.
 1. Click **Use this template** and create your own repository copy.
 2. Open the **Actions** tab in your copy.
 3. Run **Initialize Interactive Course**.
-4. Clone your copy to your machine.
+4. Clone your copy to your machine with HTTPS url using the command below:
+    - `git clone https://github.com/your-username/your-repo-name.git`
+    - So, replace your-username and your-repo-name with your actual username and repository name.
 5. Open the first issue that BitByBit Academy creates for you.
 
 This is the fastest and clearest way to start the course correctly.
