@@ -83,6 +83,16 @@ scripts\run-auth-check.cmd
 
 The script prints `PASS`, `WARN`, and `FAIL` directly in the terminal. At this stage it skips signing checks on purpose, because signing is configured in the next module.
 
+## 🔁 If You Cloned With HTTPS First
+In this course, many learners clone their template copy with HTTPS before SSH is configured. Once your SSH test works, switch your remote to SSH:
+
+```bash
+git remote set-url origin git@github.com:your-username/your-repo-name.git
+git remote -v
+```
+
+After that, continue the course using the SSH remote.
+
 ## 🏁 Success Criteria
 - `ssh-add -l` lists at least one loaded identity.
 - `ssh -T git@github.com` reports successful authentication.

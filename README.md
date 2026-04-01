@@ -8,7 +8,8 @@ If you only read one section before doing anything, read this one.
 1. Click **Use this template** and create your own repository copy.
 2. Open the **Actions** tab in your copy.
 3. Run **Initialize Interactive Course**.
-4. Open the first issue that BitByBit Academy creates for you.
+4. Clone your copy to your machine.
+5. Open the first issue that BitByBit Academy creates for you.
 
 This is the fastest and clearest way to start the course correctly.
 
@@ -33,12 +34,13 @@ This repository is designed to be used as a GitHub template.
 
 ## ▶️ How To Use This Repo
 1. Click **Use this template** on GitHub and create your own copy of this repository.
-2. Clone your copy to your machine.
-3. Start with module 01 and follow the modules in order.
-4. After module 04, run the authentication check in your local copy.
-5. After module 05, run the full setup check in your local copy.
-6. Complete the final evaluation in module 10 on a feature branch in your copy.
-7. Open a pull request in your copy of the repository and wait for GitHub Actions feedback.
+2. Open the **Actions** tab in your copy and run **Initialize Interactive Course**.
+3. Clone your copy to your machine. If you do not have SSH yet, use HTTPS for the first clone.
+4. Start with module 01 and follow the modules in order.
+5. After module 04, run the authentication check in your local copy and switch `origin` from HTTPS to SSH.
+6. After module 05, run the full setup check in your local copy.
+7. Complete the final evaluation in module 10 on a feature branch in your copy.
+8. Open a pull request in your copy of the repository and wait for GitHub Actions feedback.
 
 ## 🧠 Interactive Mode
 Use the interactive issue flow in your own template copy for the full BitByBit Academy experience.
@@ -83,6 +85,31 @@ The guided issue sequence is:
 3. open a practice pull request
 4. complete the final evaluation
 5. receive the completion issue
+
+## 📥 First Clone Before SSH
+Yes, you should clone your own template copy locally after you run **Initialize Interactive Course**.
+
+Because SSH is configured later in the course, your first clone should usually be done with HTTPS.
+
+Recommended first clone:
+
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+```
+
+If your template copy is private and you do not want to make it public, use one of these options for the first clone:
+- GitHub Desktop
+- `gh auth login` followed by `gh repo clone your-username/your-repo-name`
+
+After you finish module 04 and SSH authentication works, switch `origin` to SSH:
+
+```bash
+git remote set-url origin git@github.com:your-username/your-repo-name.git
+git remote -v
+```
+
+After that point, keep using SSH for your pushes and pull requests in this course.
 
 <a id="run-auth-check"></a>
 ## 🧪 Run The Authentication Check Now

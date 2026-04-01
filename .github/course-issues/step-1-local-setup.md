@@ -5,6 +5,18 @@ Work in your own template copy of this repository.
 ## Read First
 - [Module 04: SSH setup]({{repo_url}}/blob/main/docs/04-ssh-setup.md)
 
+## Before You Run Anything
+If you have not cloned your template copy locally yet, do that first.
+
+Recommended first clone:
+
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+```
+
+Use HTTPS for the first clone because SSH is configured in this step.
+
 ## Your Task
 Run the authentication check from the root of your repository.
 

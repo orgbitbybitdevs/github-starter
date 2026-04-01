@@ -31,6 +31,13 @@ cd repo-name
 
 After cloning, Git stores the source URL under the alias `origin`. In this course, `origin` should usually point to your own copy of the template.
 
+If you cloned your copy with HTTPS earlier because SSH was not configured yet, you can switch `origin` to SSH now:
+
+```bash
+git remote set-url origin git@github.com:your-username/your-repo-name.git
+git remote -v
+```
+
 ## 🔎 Inspect The Remote
 Run:
 
