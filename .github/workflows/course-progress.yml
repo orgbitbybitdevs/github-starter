@@ -1,0 +1,91 @@
+name: Advance Interactive Course
+
+on:
+  issues:
+    types: [closed]
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  advance:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Open Next Course Issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const repoUrl = `https://github.com/${owner}/${repo}`;
+            const labels = context.payload.issue.labels.map((label) => label.name);
+            const issueDir = path.join(process.env.GITHUB_WORKSPACE, '.github', 'course-issues');
+
+            const steps = {
+              'course:step-1': {
+                title: 'Step 2: Open your practice pull request',
+                file: 'step-2-practice-pr.md',
+                labels: ['course', 'course:step-2']
+              },
+              'course:step-2': {
+                title: 'Step 3: Complete your final evaluation',
+                file: 'step-3-final-evaluation.md',
+                labels: ['course', 'course:step-3']
+              },
+              'course:step-3': {
+                title: 'Course complete',
+                file: 'step-4-complete.md',
+                labels: ['course', 'course:complete']
+              }
+            };
+
+            const currentStep = Object.keys(steps).find((name) => labels.includes(name));
+            if (!currentStep) {
+              core.notice('Closed issue is not part of the interactive course.');
+              return;
+            }
+
+            const nextStep = steps[currentStep];
+            const existingIssues = await github.paginate(github.rest.issues.listForRepo, {
+              owner,
+              repo,
+              state: 'all',
+              per_page: 100
+            });
+
+            const existingNext = existingIssues.find((issue) => issue.title === nextStep.title);
+            if (existingNext) {
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: context.payload.issue.number,
+                body: `Next step already exists: ${existingNext.html_url}`
+              });
+              return;
+            }
+
+            const body = fs
+              .readFileSync(path.join(issueDir, nextStep.file), 'utf8')
+              .replaceAll('{{repo_url}}', repoUrl);
+
+            const created = await github.rest.issues.create({
+              owner,
+              repo,
+              title: nextStep.title,
+              body,
+              labels: nextStep.labels
+            });
+
+            await github.rest.issues.createComment({
+              owner,
+              repo,
+              issue_number: context.payload.issue.number,
+              body: `Nice work. Your next step is ready: ${created.data.html_url}`
+            });

@@ -1,0 +1,83 @@
+name: Initialize Interactive Course
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  initialize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Create Labels And First Issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const repoUrl = `https://github.com/${owner}/${repo}`;
+            const issueDir = path.join(process.env.GITHUB_WORKSPACE, '.github', 'course-issues');
+
+            const labels = [
+              { name: 'course', color: '1d76db', description: 'Interactive course issue' },
+              { name: 'course:step-1', color: '0e8a16', description: 'Interactive course step 1' },
+              { name: 'course:step-2', color: '5319e7', description: 'Interactive course step 2' },
+              { name: 'course:step-3', color: 'fbca04', description: 'Interactive course step 3' },
+              { name: 'course:complete', color: '1d9b73', description: 'Interactive course completed' }
+            ];
+
+            for (const label of labels) {
+              try {
+                await github.rest.issues.getLabel({
+                  owner,
+                  repo,
+                  name: label.name
+                });
+              } catch (error) {
+                if (error.status === 404) {
+                  await github.rest.issues.createLabel({
+                    owner,
+                    repo,
+                    ...label
+                  });
+                } else {
+                  throw error;
+                }
+              }
+            }
+
+            const firstTitle = 'Step 1: Verify your local setup';
+            const existingIssues = await github.paginate(github.rest.issues.listForRepo, {
+              owner,
+              repo,
+              state: 'all',
+              per_page: 100
+            });
+
+            const existingFirst = existingIssues.find((issue) => issue.title === firstTitle);
+            if (existingFirst) {
+              core.notice(`Course already initialized. Existing issue: ${existingFirst.html_url}`);
+              return;
+            }
+
+            const firstBody = fs
+              .readFileSync(path.join(issueDir, 'step-1-local-setup.md'), 'utf8')
+              .replaceAll('{{repo_url}}', repoUrl);
+
+            const created = await github.rest.issues.create({
+              owner,
+              repo,
+              title: firstTitle,
+              body: firstBody,
+              labels: ['course', 'course:step-1']
+            });
+
+            core.notice(`Created first course issue: ${created.data.html_url}`);

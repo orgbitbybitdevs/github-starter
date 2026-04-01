@@ -1,4 +1,4 @@
-name: Final Evaluation Autograding
+name: Practice Pull Request Check
 
 on:
   pull_request:
@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   grade:
-    if: startsWith(github.head_ref, 'feature/evaluation-')
+    if: startsWith(github.head_ref, 'feature/practice-')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -17,9 +17,9 @@ jobs:
         with:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.head.sha }}
-      
-      - name: Run Autograding Script
-        run: bash scripts/grade-pr.sh
+
+      - name: Run Practice Grading Script
+        run: bash scripts/grade-practice-pr.sh
         env:
           HEAD_REF: ${{ github.head_ref }}
           BASE_REF: ${{ github.base_ref }}

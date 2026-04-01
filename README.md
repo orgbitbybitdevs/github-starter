@@ -30,6 +30,17 @@ This repository is designed to be used as a GitHub template.
 6. Complete the final evaluation in module 10 on a feature branch in your copy.
 7. Open a pull request in your copy of the repository and wait for GitHub Actions feedback.
 
+## 🧠 Interactive Mode
+If you want a guided experience similar to GitHub Skills, use the interactive issue flow in your own template copy.
+
+[![Initialize Interactive Course](https://img.shields.io/badge/Start-Interactive%20Course-f97316?style=for-the-badge)](#initialize-interactive-course)
+
+The interactive mode does this:
+- creates the first course issue automatically
+- opens the next issue when you close the current one
+- gives you one practice pull request before the final evaluation
+- uses GitHub Actions to grade practice and final pull requests
+
 ## ⚡ Quick Actions
 [![Run Authentication Check](https://img.shields.io/badge/Run-Authentication%20Check-2ea44f?style=for-the-badge)](#run-auth-check)
 [![Run Full Setup Check](https://img.shields.io/badge/Run-Full%20Setup%20Check-0969da?style=for-the-badge)](#run-full-check)
@@ -46,6 +57,21 @@ This repository is designed to be used as a GitHub template.
 8. [docs/08-fork-origin-upstream.md](docs/08-fork-origin-upstream.md) - Distinguish branches from forks and configure `upstream`.
 9. [docs/09-troubleshooting.md](docs/09-troubleshooting.md) - Diagnose common Git, SSH, signing, and remote errors.
 10. [docs/10-final-evaluation.md](docs/10-final-evaluation.md) - Complete a graded GitHub Flow exercise with automated checks in your template copy.
+
+<a id="initialize-interactive-course"></a>
+## 🧭 Initialize The Interactive Course
+In your own template copy on GitHub:
+
+1. open the **Actions** tab
+2. select **Initialize Interactive Course**
+3. click **Run workflow**
+4. open the issue that gets created automatically
+
+The guided issue sequence is:
+1. verify your local setup
+2. open a practice pull request
+3. complete the final evaluation
+4. receive the completion issue
 
 <a id="run-auth-check"></a>
 ## 🧪 Run The Authentication Check Now
@@ -104,13 +130,17 @@ The scripts print the results directly in your terminal.
 
 <a id="see-pr-results"></a>
 ## ✅ See Your PR Results
-When you open the final pull request in your own template copy, GitHub runs the grading workflow automatically.
+When you open a course pull request in your own template copy, GitHub runs the grading workflow automatically.
 
 You can see the results in two places:
 1. under the status area at the top of the pull request
 2. in the **Checks** tab of the pull request
 
-Click **Final Evaluation Autograding** to see the detailed `PASS` or `FAIL` output from the grader.
+You should see one of these workflows:
+- **Practice Pull Request Check**
+- **Final Evaluation Autograding**
+
+Open the workflow result to see the detailed `PASS` or `FAIL` output from the grader.
 
 ## 🏁 By The End Of This Course
 You should be able to:
@@ -123,8 +153,12 @@ You should be able to:
 - complete a branch-based pull request workflow in your own template copy that passes automated grading
 
 ## 🤖 Automation In This Repo
+- `.github/workflows/initialize-course.yml` creates the first interactive course issue on demand.
+- `.github/workflows/course-progress.yml` opens the next course issue when you close the current step.
+- `.github/workflows/practice-autograding.yml` grades the practice pull request.
 - `scripts/run-auth-check.sh`, `scripts/run-auth-check.ps1`, and `scripts/run-auth-check.cmd` run the authentication-stage checks.
 - `scripts/run-full-check.sh`, `scripts/run-full-check.ps1`, and `scripts/run-full-check.cmd` run the full setup checks.
 - `scripts/verify-setup.sh` and `scripts/verify-setup.ps1` are the underlying cross-platform setup validators.
 - `.github/workflows/autograding.yml` runs the final evaluation checks on pull requests in each learner's copy.
+- `scripts/grade-practice-pr.sh` enforces the practice pull request rules.
 - `scripts/grade-pr.sh` enforces the final evaluation rules.
