@@ -57,6 +57,23 @@ jobs:
               return;
             }
 
+            const sender = context.payload.sender.login;
+            if ((currentStep === 'course:step-3' || currentStep === 'course:step-4') && !sender.includes('github-actions')) {
+              await github.rest.issues.update({
+                owner,
+                repo,
+                issue_number: context.payload.issue.number,
+                state: 'open'
+              });
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: context.payload.issue.number,
+                body: "BitByBit Academy mentor note: Nice try! 😉 You cannot close this step manually. You must pass the required Pull Request checks. The autograder bot will close this issue automatically when you succeed."
+              });
+              return;
+            }
+
             const nextStep = steps[currentStep];
             const existingIssues = await github.paginate(github.rest.issues.listForRepo, {
               owner,

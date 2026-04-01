@@ -91,6 +91,23 @@ jobs:
               });
             }
 
+            if (outcome === 'success') {
+              const allIssues = await github.paginate(github.rest.issues.listForRepo, {
+                owner,
+                repo,
+                state: 'open'
+              });
+              const courseIssue = allIssues.find((issue) => issue.labels.some((l) => l.name === 'course:step-4'));
+              if (courseIssue) {
+                await github.rest.issues.update({
+                  owner,
+                  repo,
+                  issue_number: courseIssue.number,
+                  state: 'closed'
+                });
+              }
+            }
+
       - name: Fail Workflow If Final Check Failed
         if: steps.grade.outcome == 'failure'
         run: exit 1
