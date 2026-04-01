@@ -21,7 +21,19 @@ git --version
 git config --global --list
 ssh-add -l
 git remote -v
-bash scripts/verify-setup.sh
+bash scripts/run-full-check.sh
+```
+
+On Windows PowerShell, replace the last command with:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/run-full-check.ps1
+```
+
+On Windows Command Prompt, use:
+
+```bat
+scripts\run-full-check.cmd
 ```
 
 These checks usually tell you whether the problem is local Git configuration, SSH authentication, or remote configuration.

@@ -8,6 +8,8 @@
 ## 🎯 Outcome
 Configure Git to sign commits with SSH and understand what GitHub checks before showing the `Verified` badge.
 
+[![Run Full Setup Check](https://img.shields.io/badge/Run-Full%20Setup%20Check-0969da?style=for-the-badge)](#run-full-check)
+
 ## ✅ You Should Be Able To
 - explain the difference between authentication and signing
 - configure Git for SSH commit signing
@@ -48,6 +50,7 @@ git config --global user.signingkey ~/.ssh/id_ed25519.pub
 git config --global commit.gpgsign true
 ```
 
+<a id="run-full-check"></a>
 ## 🧪 Verify
 Run:
 
@@ -57,13 +60,27 @@ git config --global --get user.signingkey
 git config --global --get commit.gpgsign
 ```
 
-Then run the local setup check:
+Then run the full setup check from the root of your template copy:
 
 ```bash
-bash scripts/verify-setup.sh
+bash scripts/run-full-check.sh
+```
+
+On Windows PowerShell, run:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/run-full-check.ps1
+```
+
+On Windows Command Prompt, run:
+
+```bat
+scripts\run-full-check.cmd
 ```
 
 After you push a signed commit to GitHub, inspect the latest commit in the GitHub UI and confirm that it shows `Verified`.
+
+The script prints `PASS`, `WARN`, and `FAIL` directly in the terminal. At this stage, signing checks are required and should pass.
 
 ## 🏁 Success Criteria
 - `gpg.format` is set to `ssh`.

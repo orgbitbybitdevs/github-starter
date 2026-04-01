@@ -8,6 +8,8 @@
 ## 🎯 Outcome
 Demonstrate a complete beginner GitHub Flow inside your own copy of this template: create a branch, add a file, create a signed commit, push it, and open a pull request that passes automated grading.
 
+[![See PR Results](https://img.shields.io/badge/See-PR%20Results-8250df?style=for-the-badge)](#see-pr-results)
+
 ## ✅ You Should Be Able To
 - create a feature branch from `main`
 - add one file under `students/`
@@ -88,8 +90,16 @@ GitHub Actions will verify:
 
 Because this repository is a template, the workflow runs inside your copy after GitHub copies the `.github` and `scripts/` files.
 
+<a id="see-pr-results"></a>
 ## 👀 Final Manual Check
 After the workflow passes, open the latest commit on GitHub and confirm that it shows `Verified`.
+
+To read the grader results:
+1. open your pull request
+2. look at the status box near the top
+3. click **Checks**
+4. open **Final Evaluation Autograding**
+5. read the `PASS` or `FAIL` output from the workflow log
 
 ## 🏁 Success Criteria
 - GitHub Actions passes on the pull request.

@@ -8,6 +8,8 @@
 ## 🎯 Outcome
 Generate an SSH key pair, load it into `ssh-agent`, and register the public key in GitHub as an authentication key.
 
+[![Run Authentication Check](https://img.shields.io/badge/Run-Authentication%20Check-2ea44f?style=for-the-badge)](#run-auth-check)
+
 ## ✅ You Should Be Able To
 - explain the difference between a private key and a public key
 - create an `ed25519` SSH key pair
@@ -52,6 +54,7 @@ Then:
 4. select **Authentication Key**
 5. paste the public key and save
 
+<a id="run-auth-check"></a>
 ## 🧪 Verify
 Run:
 
@@ -60,11 +63,25 @@ ssh-add -l
 ssh -T git@github.com
 ```
 
-You can also run the local repo check:
+Then run the authentication check from the root of your template copy:
 
 ```bash
-bash scripts/verify-setup.sh --check-github
+bash scripts/run-auth-check.sh
 ```
+
+On Windows PowerShell, run:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/run-auth-check.ps1
+```
+
+On Windows Command Prompt, run:
+
+```bat
+scripts\run-auth-check.cmd
+```
+
+The script prints `PASS`, `WARN`, and `FAIL` directly in the terminal. At this stage it skips signing checks on purpose, because signing is configured in the next module.
 
 ## 🏁 Success Criteria
 - `ssh-add -l` lists at least one loaded identity.

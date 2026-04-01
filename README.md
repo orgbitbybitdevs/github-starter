@@ -25,9 +25,15 @@ This repository is designed to be used as a GitHub template.
 1. Click **Use this template** on GitHub and create your own copy of this repository.
 2. Clone your copy to your machine.
 3. Start with module 01 and follow the modules in order.
-4. After modules 02 to 05, run `bash scripts/verify-setup.sh` in your local copy.
-5. Complete the final evaluation in module 10 on a feature branch in your copy.
-6. Open a pull request in your copy of the repository and wait for GitHub Actions feedback.
+4. After module 04, run the authentication check in your local copy.
+5. After module 05, run the full setup check in your local copy.
+6. Complete the final evaluation in module 10 on a feature branch in your copy.
+7. Open a pull request in your copy of the repository and wait for GitHub Actions feedback.
+
+## ⚡ Quick Actions
+[![Run Authentication Check](https://img.shields.io/badge/Run-Authentication%20Check-2ea44f?style=for-the-badge)](#run-auth-check)
+[![Run Full Setup Check](https://img.shields.io/badge/Run-Full%20Setup%20Check-0969da?style=for-the-badge)](#run-full-check)
+[![See PR Results](https://img.shields.io/badge/See-PR%20Results-8250df?style=for-the-badge)](#see-pr-results)
 
 ## 📚 Course Map
 1. [docs/01-introduction.md](docs/01-introduction.md) - Understand version control, Git, and GitHub.
@@ -41,6 +47,71 @@ This repository is designed to be used as a GitHub template.
 9. [docs/09-troubleshooting.md](docs/09-troubleshooting.md) - Diagnose common Git, SSH, signing, and remote errors.
 10. [docs/10-final-evaluation.md](docs/10-final-evaluation.md) - Complete a graded GitHub Flow exercise with automated checks in your template copy.
 
+<a id="run-auth-check"></a>
+## 🧪 Run The Authentication Check Now
+Open a terminal in the root of your template copy and run one command:
+
+macOS/Linux:
+
+```bash
+bash scripts/run-auth-check.sh
+```
+
+Windows PowerShell:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/run-auth-check.ps1
+```
+
+Windows Command Prompt:
+
+```bat
+scripts\run-auth-check.cmd
+```
+
+Use this after module 04. It checks Git, identity, SSH key material, `ssh-agent`, and GitHub authentication. It intentionally skips commit-signing checks.
+
+<a id="run-full-check"></a>
+## 🛡️ Run The Full Setup Check Now
+Open a terminal in the root of your template copy and run one command:
+
+macOS/Linux:
+
+```bash
+bash scripts/run-full-check.sh
+```
+
+Windows PowerShell:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/run-full-check.ps1
+```
+
+Windows Command Prompt:
+
+```bat
+scripts\run-full-check.cmd
+```
+
+Use this after module 05. It checks everything from the authentication check plus SSH commit-signing configuration.
+
+## 📊 How To Read The Results
+- `PASS` means the check succeeded.
+- `WARN` means the course can continue, but something still needs attention.
+- `FAIL` means you should fix that item before moving on.
+
+The scripts print the results directly in your terminal.
+
+<a id="see-pr-results"></a>
+## ✅ See Your PR Results
+When you open the final pull request in your own template copy, GitHub runs the grading workflow automatically.
+
+You can see the results in two places:
+1. under the status area at the top of the pull request
+2. in the **Checks** tab of the pull request
+
+Click **Final Evaluation Autograding** to see the detailed `PASS` or `FAIL` output from the grader.
+
 ## 🏁 By The End Of This Course
 You should be able to:
 - install and verify Git on your machine
@@ -52,6 +123,8 @@ You should be able to:
 - complete a branch-based pull request workflow in your own template copy that passes automated grading
 
 ## 🤖 Automation In This Repo
-- `scripts/verify-setup.sh` checks local Git, SSH, and signing configuration.
+- `scripts/run-auth-check.sh`, `scripts/run-auth-check.ps1`, and `scripts/run-auth-check.cmd` run the authentication-stage checks.
+- `scripts/run-full-check.sh`, `scripts/run-full-check.ps1`, and `scripts/run-full-check.cmd` run the full setup checks.
+- `scripts/verify-setup.sh` and `scripts/verify-setup.ps1` are the underlying cross-platform setup validators.
 - `.github/workflows/autograding.yml` runs the final evaluation checks on pull requests in each learner's copy.
 - `scripts/grade-pr.sh` enforces the final evaluation rules.
