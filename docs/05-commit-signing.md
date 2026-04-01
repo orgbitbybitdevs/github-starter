@@ -1,56 +1,76 @@
-# 🖋️ Commit Signing
+# Enable Commit Signing
 
 ***
-| [⬅️ Previous: Setup SSH](04-ssh-setup.md) | [Next: Your First Commit ➡️](06-first-commit.md) |
+| [<- Previous: Set Up SSH](04-ssh-setup.md) | [Next: Make Your First Commit ->](06-first-commit.md) |
 | :--- | ---: |
 ***
 
-**🎯 Learning Objective:** You will apply cryptographic SSH signatures to your commits. Understand the difference between pushing code securely vs explicitly signing who wrote it to earn the trusted **"Verified"** badge.
+## Outcome
+Configure Git to sign commits with SSH and understand what GitHub checks before showing the `Verified` badge.
 
-## ⚙️ What it does
-Commit signing attaches a cryptographic "Wax Seal" to every revision you author. It undeniably proves that the payload (`commit`) hasn't been tampered with and originated precisely from you. 
+## You Should Be Able To
+- explain the difference between authentication and signing
+- configure Git for SSH commit signing
+- explain what GitHub verifies when it marks a commit as `Verified`
 
-## 🧠 Why it exists
-Remember the "Name Tag" from module 03? A rogue programmer can modify their Git configuration to use your email and push fake commits pretending to be you. 
-Signing uses the private key stored safely on your laptop to cryptographically sign the metadata, fully securing the collaboration supply chain.
+## Key Ideas
+- Authentication proves your machine can connect to GitHub.
+- Signing proves a commit contains a cryptographic signature from a registered signing key.
+- A signed commit is not the same thing as a pushed commit. You can push unsigned commits, and you can sign commits before pushing them.
 
-```mermaid
-sequenceDiagram
-    participant You as Git (Your Laptop)
-    participant GitHub
-    
-    You->>Your Code: Save snapshot (Commit)
-    Note over You: Git attaches your un-fakeable<br/>SSH Signature 
-    You->>GitHub: Synchronize to Remote
-    GitHub-->>GitHub: Decrypts metadata against your<br/>public "Signing Key"
-    Note over GitHub: Green "Verified" Badge<br/>Appears!
+## What GitHub Verifies
+GitHub can mark a commit as `Verified` when:
+
+1. the commit contains a valid cryptographic signature
+2. the signature matches a public signing key registered to the account
+3. the commit metadata is consistent enough for GitHub to attribute the signature correctly
+
+## Step 1: Add Your Public Key As A Signing Key
+You can reuse the same SSH public key you created in the previous module.
+
+1. print the public key:
+
+```bash
+cat ~/.ssh/id_ed25519.pub
 ```
 
-> [!WARNING]
-> **Technical requirement:** SSH commit signatures explicitly compel a local Git binary of **`2.34+`** or higher. Run `git --version` to ensure compatibility.
+2. open **GitHub -> Settings -> SSH and GPG keys**
+3. click **New SSH key**
+4. select **Signing Key**
+5. paste the public key and save
 
-## 📅 When to use it
-We will configure Git to sign **every** snapshot using the same SSH key pair we generated previously for authentication. 
+## Step 2: Configure Git To Sign Commits
+Run:
 
-### Step 1: Register the Key as a Signing Key
-Before GitHub can analyze your seals, you must re-upload the public key, explicitly tagged for signing.
-
-1. Recall your public key to the clipboard: `cat ~/.ssh/id_ed25519.pub`
-2. Navigate to **GitHub > Settings > SSH and GPG keys**.
-3. Click **New SSH key**.
-4. This time, under **"Key type"**, explicitly select **Signing Key**. Paste the payload and save.
-
-### Step 2: Configure Global Git Signatures
-*(Execute these locally to enforce signing globally!)*
 ```bash
 git config --global gpg.format ssh
 git config --global user.signingkey ~/.ssh/id_ed25519.pub
 git config --global commit.gpgsign true
 ```
 
-## ✅ How to verify
-Once we create our first repository in the next module and push it online, inspect your commit history via the GitHub UI. A green **"Verified"** pill confirms the entire architectural chain works flawlessly.
+## Verify
+Run:
+
+```bash
+git config --global --get gpg.format
+git config --global --get user.signingkey
+git config --global --get commit.gpgsign
+```
+
+Then run the local setup check:
+
+```bash
+bash scripts/verify-setup.sh
+```
+
+After you push a signed commit to GitHub, inspect the latest commit in the GitHub UI and confirm that it shows `Verified`.
+
+## Success Criteria
+- `gpg.format` is set to `ssh`.
+- `user.signingkey` points to your public SSH key.
+- `commit.gpgsign` is set to `true`.
+- You can explain that authentication controls access to GitHub, while signing proves commit authorship.
 
 ***
-| [⬅️ Previous: Setup SSH](04-ssh-setup.md) | [Next: Your First Commit ➡️](06-first-commit.md) |
+| [<- Previous: Set Up SSH](04-ssh-setup.md) | [Next: Make Your First Commit ->](06-first-commit.md) |
 | :--- | ---: |

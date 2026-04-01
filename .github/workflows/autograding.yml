@@ -1,8 +1,11 @@
-name: GitHub Flow Evaluation
+name: Final Evaluation Autograding
 
 on:
   pull_request:
     types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
 
 jobs:
   grade:
@@ -12,9 +15,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
       
       - name: Run Autograding Script
         run: bash scripts/grade-pr.sh
         env:
           HEAD_REF: ${{ github.head_ref }}
           BASE_REF: ${{ github.base_ref }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}

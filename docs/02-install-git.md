@@ -1,58 +1,75 @@
-# 💻 Install Git
+# Install Git
 
 ***
-| [⬅️ Previous: Introduction](01-introduction.md) | [Next: Configure your Git identity ➡️](03-configure-identity.md) |
+| [<- Previous: Introduction](01-introduction.md) | [Next: Configure Your Git Identity ->](03-configure-identity.md) |
 | :--- | ---: |
 ***
 
-**🎯 Learning Objective:** You will install the core Git binaries and configure your first professional convention: setting default repositories to initialize using the `main` branch.
+## Outcome
+Install Git on your machine and set `main` as the default branch name for new repositories.
 
-## ⚙️ What it does
-This step downloads the core Git engine, ensuring your `Terminal` can parse and execute version control CLI commands.
+## You Should Be Able To
+- install Git on your operating system
+- confirm that your terminal can run `git`
+- explain what `init.defaultBranch` controls
 
-## 🧠 Why it exists
-Git must be locally compiled or installed to track revisions on your personal machine. It acts identically whether your project ever connects to the internet or stays completely offline.
+## Key Ideas
+- Git is a local command-line tool. It must be installed before you can use it.
+- `git init` creates a new repository on your machine.
+- `init.defaultBranch` sets the default branch name for future repositories you initialize locally.
 
-## 📅 When to use it
-If you run `git --version` in your terminal and get an error (e.g., `command not found`), proceed below.
+## Install Git
+Choose the instructions for your operating system.
 
 ### Windows
 1. Go to [Git for Windows](https://git-scm.com/download/win).
-2. Download the installer. Keep clicking "Next" to accept all the default settings (they are perfect for developers).
+2. Download the installer and complete the installation with the default settings.
 
 ### macOS
-Open your Terminal app and type:
+Open Terminal and run:
+
 ```bash
 git --version
 ```
-If Git isn't installed, a native window will ask to install the "Command Line Developer Tools." Click "Install".
 
-### Linux (Ubuntu/Debian/Fedora)
-For Debian architectures:
+If Git is not installed, macOS usually prompts you to install the Command Line Tools.
+
+### Linux
+On Debian or Ubuntu:
+
 ```bash
 sudo apt update
 sudo apt install git -y
 ```
-For RHEL/Fedora architectures:
+
+On Fedora or RHEL:
+
 ```bash
 sudo dnf install git -y
 ```
 
-## 🛠️ Professional Convention: Branch naming
-Historically, Git named the default "trunk" branch `master`. The industry has modernized to use `main`. Run this strictly once to configure your future local repositories professionally:
+## Set The Default Branch Name
+Run this once:
 
 ```bash
 git config --global init.defaultBranch main
 ```
 
-## ✅ How to verify
+This affects repositories you create later with `git init`.
 
-Spin up a **new** terminal session to ensure the binaries loaded into your `PATH`, and type:
+## Verify
+Open a new terminal session and run:
+
 ```bash
 git --version
+git config --global --get init.defaultBranch
 ```
-If you see a version output, your environment is ready!
+
+## Success Criteria
+- `git --version` prints an installed version instead of an error.
+- `git config --global --get init.defaultBranch` prints `main`.
+- You can explain that this setting affects new repositories, not every existing repository.
 
 ***
-| [⬅️ Previous: Introduction](01-introduction.md) | [Next: Configure your Git identity ➡️](03-configure-identity.md) |
+| [<- Previous: Introduction](01-introduction.md) | [Next: Configure Your Git Identity ->](03-configure-identity.md) |
 | :--- | ---: |

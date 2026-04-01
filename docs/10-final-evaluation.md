@@ -1,59 +1,97 @@
-# 🏆 Practical Evaluation
+# Final Evaluation
 
 ***
-| [⬅️ Previous: Troubleshooting](09-troubleshooting.md) |
+| [<- Previous: Troubleshooting](09-troubleshooting.md) |
 | :---: |
 ***
 
-**🎯 Learning Objective:** Combine all previous modules into the standard GitHub Flow. By completing this evaluation, you will demonstrate your ability to create a branch, stage files, secure your commits, and open a Pull Request subject to automated grading.
+## Outcome
+Demonstrate a complete beginner GitHub Flow: create a branch, add a file, create a signed commit, push it, and open a pull request that passes automated grading.
 
-## 📝 The Challenge
-Your objective is to execute a standard **GitHub Flow**. Do not push your changes directly to the `main` branch. 
+## You Should Be Able To
+- create a feature branch from `main`
+- add one file under `students/`
+- create a signed commit with the required message
+- open a pull request to `main`
+- explain `git add`, authentication vs signing, and `origin`
 
-### Step 1: Create a Branch
-1. From the root directory of this repository, create a new branch. Replace `[username]` with your actual GitHub username:
-   ```bash
-   git switch -c feature/evaluation-[username]
-   ```
+## Evaluation Rules
+Your submission must follow all of these rules:
 
-### Step 2: Modify the Working Tree
-1. Create a `students/` directory and add a new text file to it:
-   ```bash
-   mkdir -p students
-   echo "I have completed the Git and GitHub starter course." > students/[username].md
-   ```
+1. the branch must be named `feature/evaluation-[username]`
+2. the pull request must target `main`
+3. the only changed file must be `students/[username].md`
+4. the latest commit message must be `docs: submit final evaluation`
+5. the latest commit must be signed
 
-### Step 3: Stage and Commit (`add` & `commit`)
-1. Move your new file to the Staging area (Index) so Git tracks it:
-   ```bash
-   git add students/
-   ```
-2. Save your changes into the repository history with a clear commit message:
-   ```bash
-   git commit -m "docs: submit final evaluation file"
-   ```
+## Step 1: Create The Branch
+From the root of the repository, run:
 
-### Step 4: Push to Remote (`push`)
-Upload your new branch to the GitHub remote repository:
+```bash
+git switch -c feature/evaluation-[username]
+```
+
+Replace `[username]` with your GitHub username.
+
+## Step 2: Create The Submission File
+Create `students/[username].md` and paste this template:
+
+```md
+# GitHub Starter Evaluation
+GitHub username: [username]
+
+What `git add` does:
+- Replace this line with your explanation.
+
+Authentication vs signing:
+- Replace this line with your explanation.
+
+What `origin` points to in this repository:
+- Replace this line with your explanation.
+```
+
+Replace `[username]` with your GitHub username and write your own answers.
+
+## Step 3: Stage And Commit
+Run:
+
+```bash
+git add students/[username].md
+git commit -m "docs: submit final evaluation"
+```
+
+If Git signing is configured correctly, this commit will be signed automatically.
+
+## Step 4: Push The Branch
+Run:
+
 ```bash
 git push -u origin feature/evaluation-[username]
 ```
 
-### Step 5: Open a Pull Request
-1. Open your web browser and navigate to this repository on GitHub.
-2. GitHub will display a yellow banner showing your recent push. Click **"Compare & pull request"**.
-3. Ensure the base branch is `main` and the compare branch is your new `feature/...` branch. 
-4. Click **"Create pull request"**.
+## Step 5: Open The Pull Request
+1. open the repository on GitHub
+2. click **Compare & pull request**
+3. confirm that the base branch is `main`
+4. create the pull request
 
-## ✅ Automated Autograding
-This repository uses GitHub Actions for autograding. When you open your Pull Request, our bot will automatically run a script to verify:
-1. You worked on a new branch, not `main`.
-2. You successfully added a file to the `students/` folder.
+## What The Autograder Checks
+GitHub Actions will verify:
+- the pull request targets `main`
+- the branch name matches `feature/evaluation-[username]`
+- exactly one file was added: `students/[username].md`
+- the file contains the required reflection sections
+- the latest commit message is correct
+- the latest commit contains a cryptographic signature
 
-If your Pull Request passes the checks, you will see a green checkmark ✅. Finally, check your commit on the GitHub UI to ensure it displays the green **"Verified"** badge confirming your SSH signature is working.
+## Final Manual Check
+After the workflow passes, open the latest commit on GitHub and confirm that it shows `Verified`.
 
-Congratulations! We look forward to seeing your Pull Request.
+## Success Criteria
+- GitHub Actions passes on the pull request.
+- The latest commit shows `Verified` on GitHub.
+- You can explain each answer in your submission file without reading from the docs.
 
 ***
-| [⬅️ Previous: Troubleshooting](09-troubleshooting.md) |
+| [<- Previous: Troubleshooting](09-troubleshooting.md) |
 | :---: |

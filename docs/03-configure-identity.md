@@ -1,45 +1,54 @@
-# 🏷️ Configure your Git identity
+# Configure Your Git Identity
 
 ***
-| [⬅️ Previous: Install Git](02-install-git.md) | [Next: Setup SSH ➡️](04-ssh-setup.md) |
+| [<- Previous: Install Git](02-install-git.md) | [Next: Set Up SSH Authentication ->](04-ssh-setup.md) |
 | :--- | ---: |
 ***
 
-**🎯 Learning Objective:** Understand the strict technical difference between Git Author Metadata ("Name Tags") and actual Repository Authentication ("Passwords/Keys").
+## Outcome
+Configure the name and email Git writes into your commits, and separate identity metadata from authentication and signing.
 
-## ⚙️ What it does
-This global configuration embeds a "Name Tag" into your code. Whenever you record a snapshot (`commit`), your name and structural email are permanently attached to the metadata.
+## You Should Be Able To
+- set `user.name` and `user.email`
+- explain what author metadata is
+- explain why author identity is not the same as authentication
 
-```mermaid
-graph LR
-    A[Your Code Changes] --> D[(Git Commit Snapshot)]
-    B[Your Name] --> D
-    C[Your Email] --> D
-```
+## Key Ideas
+- `user.name` and `user.email` are written into commit metadata.
+- These values identify the author of a commit, but they do not prove that the author is really you.
+- Authentication answers "can this machine connect to GitHub?"
+- Signing answers "was this commit cryptographically signed by a registered key?"
 
-## 🧠 Why it exists
-Git is heavily decentralized. When multiple software engineers collaborate on hundreds of files, Git tracks explicitly *who* authored each line via these `user.name` and `user.email` variables. 
-
-> [!CAUTION]
-> **Name Tag vs Authentication**
-> Setting this identity *does not give you access to push code onto a GitHub server*. Think of it merely as writing your name on a test sheet. Because anyone can theoretically type *your* email on their machine, we will secure your identity against spoofing using cryptographic SSH tools in the following modules.
-
-## 📅 When to use it
-Run exactly once globally on your workstation. Ensure the email precisely matches the primary email associated with your GitHub account for proper contribution attribution. 
+## Configure Your Name And Email
+Run these commands once on your machine:
 
 ```bash
 git config --global user.name "Your First and Last Name"
 git config --global user.email "your_email@example.com"
 ```
 
-## ✅ How to verify
+Use an email address that is associated with your GitHub account. That helps GitHub attribute your commits correctly.
 
-Read back your global configuration keys to ensure they successfully persisted in your `~/.gitconfig` file:
+## Identity vs Authentication vs Signing
+- **Identity metadata** is the name and email stored in the commit.
+- **Authentication** is how GitHub decides whether your machine is allowed to push.
+- **Signing** is how a commit proves it was signed with a key registered to an account.
+
+These are three related but different concepts.
+
+## Verify
+Run:
+
 ```bash
-git config --global --list
+git config --global --get user.name
+git config --global --get user.email
 ```
-Look through the parsed output block. If `user.name` and `user.email` correctly reflect your strings, you have completed identity registration!
+
+## Success Criteria
+- Both commands print values instead of empty output.
+- You can explain why setting `user.email` alone does not let you push to GitHub.
+- You can explain why GitHub attribution and commit verification are related, but not identical.
 
 ***
-| [⬅️ Previous: Install Git](02-install-git.md) | [Next: Setup SSH ➡️](04-ssh-setup.md) |
+| [<- Previous: Install Git](02-install-git.md) | [Next: Set Up SSH Authentication ->](04-ssh-setup.md) |
 | :--- | ---: |

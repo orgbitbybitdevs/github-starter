@@ -1,56 +1,117 @@
-# 🩹 Troubleshooting Reference
+# Troubleshooting
 
 ***
-| [⬅️ Previous: Forks vs Branches](08-fork-origin-upstream.md) | [Next: Practical Evaluation ➡️](10-final-evaluation.md) |
+| [<- Previous: Branches, Forks, Origin, And Upstream](08-fork-origin-upstream.md) | [Next: Final Evaluation ->](10-final-evaluation.md) |
 | :--- | ---: |
 ***
 
-**🎯 Learning Objective:** Provide a standardized, professional checklist to resolve the most consistently encountered Git configuration, authentication, and SSH errors.
+## Outcome
+Diagnose common Git, SSH, signing, and remote problems without guessing.
 
-When encountering native Git errors during push operations, systematically verify the following before escalating requests.
+## You Should Be Able To
+- decide whether a problem is about installation, authentication, signing, or remotes
+- run a short triage checklist before changing settings
+- apply a targeted fix instead of repeating setup steps blindly
 
-## 🚨 SSH Authentication Failed
+## Quick Triage Checklist
+Run these commands first:
 
-### Error: `Permission denied (publickey)`
-**The Issue:** GitHub rejected your SSH connection because the uploaded public key on your account fails to match the private key evaluating locally in your `ssh-agent`.
+```bash
+git --version
+git config --global --list
+ssh-add -l
+git remote -v
+bash scripts/verify-setup.sh
+```
 
-**Resolutions:**
-1. Check if the SSH agent is actively executing and securely loaded your key:
-   ```bash
-   ssh-add -l
-   ```
-   *If the terminal returns "The agent has no identities", you must reload the process:*
-   ```bash
-   eval "$(ssh-agent -s)"
-   ssh-add ~/.ssh/id_ed25519
-   ```
+These checks usually tell you whether the problem is local Git configuration, SSH authentication, or remote configuration.
 
-2. Confirm you explicitly designated the uploaded GitHub key as an **Authentication Key**. Do not generate redundant pairs using `ssh-keygen` continuously; simply re-add the existing `.ssh` public file to GitHub.
+## Problem: `git: command not found`
+Git is not installed or is not available on your shell `PATH`.
 
-## 🚨 Commit Verification Fails
+Fix:
+1. install Git again for your operating system
+2. open a new terminal session
+3. run `git --version`
 
-### Error: Commit displays gray "Unverified"
-**The Issue:** Your author identity configuration (`user.email`) mathematically mismatched the email validated on your GitHub account, OR you failed to configure your second SSH key expressly as a "Signing Key".
+## Problem: `Permission denied (publickey)`
+GitHub rejected the SSH connection. This is an authentication problem.
 
-**Resolutions:**
-1. Verify global environment metadata:
-   ```bash
-   git config --global --list
-   ```
-   *Verify `user.email` aligns perfectly structurally with the primary email assigned directly to your GitHub Settings > Emails page.*
-2. Verify you instantiated **two separate keys** via the GitHub UI using your identical local payload (`.pub` file). One explicitly locked as *Authentication Key*, one explicitly locked as *Signing Key*.
+Fix:
+1. check whether the key is loaded:
 
-## 🚨 Push Failures 
+```bash
+ssh-add -l
+```
 
-### Error: `Support for password authentication was removed. Please use a personal access token instead.`
-**The Issue:** You explicitly cloned the repository utilizing GitHub's legacy HTTPS schema, rather than the cryptographically secure SSH protocol.
+2. if needed, start `ssh-agent` and load the key again:
 
-**Resolution:**
-Migrate the isolated `origin` alias natively from HTTPS securely to SSH:
+```bash
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+```
+
+3. confirm that the public key in `~/.ssh/id_ed25519.pub` is registered in GitHub as an **Authentication Key**
+4. test again:
+
+```bash
+ssh -T git@github.com
+```
+
+## Problem: Commit shows `Unverified` on GitHub
+This is a signing problem, not an authentication problem.
+
+Check:
+1. the commit was created after signing was enabled
+2. `user.email` matches an email associated with your GitHub account
+3. the public key was also added to GitHub as a **Signing Key**
+4. these settings exist:
+
+```bash
+git config --global --get gpg.format
+git config --global --get user.signingkey
+git config --global --get commit.gpgsign
+```
+
+If the commit was created before signing was enabled, create a new signed commit.
+
+## Problem: Push asks for a password or token
+Your remote is probably using HTTPS instead of SSH.
+
+Check:
+
+```bash
+git remote -v
+```
+
+If the remote starts with `https://github.com/`, switch it to SSH:
+
 ```bash
 git remote set-url origin git@github.com:username/repo.git
 ```
 
+## Problem: `src refspec main does not match any`
+This usually means you do not have a commit on the branch yet, or you are pushing the wrong branch name.
+
+Fix:
+1. check the current branch:
+
+```bash
+git branch --show-current
+```
+
+2. create a commit if the repository is still empty
+3. push the current branch explicitly:
+
+```bash
+git push -u origin <branch-name>
+```
+
+## Success Criteria
+- You can tell whether a failure is about auth, signing, or remote URLs.
+- You can explain why `Permission denied (publickey)` and `Unverified` are different problems.
+- You know which commands to run before changing your setup.
+
 ***
-| [⬅️ Previous: Forks vs Branches](08-fork-origin-upstream.md) | [Next: Practical Evaluation ➡️](10-final-evaluation.md) |
+| [<- Previous: Branches, Forks, Origin, And Upstream](08-fork-origin-upstream.md) | [Next: Final Evaluation ->](10-final-evaluation.md) |
 | :--- | ---: |

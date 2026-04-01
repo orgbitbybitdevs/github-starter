@@ -1,41 +1,55 @@
-# 🕰️ Introduction to Git and Version Control
+# Introduction to Git and GitHub
 
 ***
-| [Next: Install Git ➡️](02-install-git.md) |
+| [Next: Install Git ->](02-install-git.md) |
 | :---: |
 ***
 
-**🎯 Learning Objective:** By the end of this module, you will understand the fundamental technical difference between Git (a local CLI engine) and GitHub (a cloud hosting platform), and why Version Control is a mandatory industry standard.
+## Outcome
+Understand what version control is, what Git does locally, and what GitHub adds on top.
 
-## ⚙️ What it does
-Think of Git as a "time machine" for your code. Technically, it is a Distributed Version Control System (DVCS). It operates by taking a cryptographic snapshot of your project exactly as it looks at a certain moment in time, allowing you to seamlessly revert to previous states (`commits`) if something breaks.
+## You Should Be Able To
+- explain the difference between Git and GitHub
+- describe why version control matters even on small projects
+- identify `.git` as the local history database for a repository
 
-> [!IMPORTANT]
-> **Git ≠ GitHub.** 
-> **Git** is the CLI engine running locally on your laptop tracking changes.
-> **GitHub** is the cloud website where you securely synchronize your local Git snapshots to share them with the world.
+## Key Ideas
+- Git is a distributed version control system that runs on your machine.
+- GitHub is a platform that hosts Git repositories and adds collaboration features.
+- A commit is a saved project snapshot plus metadata such as author, timestamp, and message.
+- The `.git` directory stores repository history, references, and configuration for the project.
 
-## 🧠 Why it exists
-Before Git, people used to save multiple copies of folders, creating massive confusion across teams:
+## Git vs GitHub
+Git and GitHub are related, but they are not the same tool.
 
-```mermaid
-graph TD
-    A[project-final] --> B[project-final-v2]
-    B --> C[project-final-really-final]
-    C --> D[project-PLEASE-WORK]
-```
+- **Git** tracks file changes locally. You can use it without an internet connection.
+- **GitHub** hosts Git repositories remotely so people can share code, review changes, and open pull requests.
 
-Git solves this by keeping an elegant, immutable history in the background (within a hidden `.git` folder). It guarantees that you can safely experiment without losing data, and explicitly records who authored each modification.
+## Why Version Control Matters
+Without version control, teams often create folders such as `project-final`, `project-final-v2`, and `project-final-really-final`. That approach loses history and makes collaboration hard.
 
-## 📅 When to use it
-You should use Git for **every single project**, no matter how small. Having a local version history that lets you "undo" catastrophic mistakes is a fundamental engineering safety net.
+Git solves that problem by recording a structured history of commits. Each commit points to a project snapshot, so you can inspect what changed, when it changed, and who made the change.
 
-## ✅ How to verify
-Once we install Git in the next module, your verification step will simply be ensuring your terminal recognizes the executable binaries:
+## Preview Of The Workflow
+Throughout this course, you will learn a basic Git workflow:
+
+1. change files in the working directory
+2. stage selected changes with `git add`
+3. create a commit with `git commit`
+4. push the commit to GitHub
+
+## Verify
+In the next module you will install Git and confirm that your shell can run it:
+
 ```bash
 git --version
 ```
 
+## Success Criteria
+- You can explain Git in one sentence without mentioning GitHub.
+- You can explain GitHub in one sentence without calling it "Git".
+- You know that repository history lives in `.git`.
+
 ***
-| [Next: Install Git ➡️](02-install-git.md) |
+| [Next: Install Git ->](02-install-git.md) |
 | :---: |

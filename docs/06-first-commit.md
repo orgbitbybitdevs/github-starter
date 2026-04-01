@@ -1,60 +1,71 @@
-# 🚀 Your First Commit
+# Make Your First Commit
 
 ***
-| [⬅️ Previous: Commit Signing](05-commit-signing.md) | [Next: Remotes and Cloning ➡️](07-remotes-and-cloning.md) |
+| [<- Previous: Enable Commit Signing](05-commit-signing.md) | [Next: Learn Remotes And Cloning ->](07-remotes-and-cloning.md) |
 | :--- | ---: |
 ***
 
-**🎯 Learning Objective:** Learn the fundamental local loop: transitioning a file from an untracked state in your **Working Tree**, to the **Staging Area**, to an immutable snapshot in your **Commit History**.
+## Outcome
+Practice the local Git loop: working directory -> staging area -> commit history.
 
-## ⚙️ What it does
-Git orchestrates files through three distinct operational states:
-1. **Working Tree**: Your local directory where you actively create and modify files.
-2. **Staging Area (Index)**: A conceptual waiting room. You explicitly stage changes here, telling Git exactly which modifications should be included in the next snapshot.
-3. **Repository (Commit History)**: The `.git` database storing your permanent, encrypted snapshots (`commits`).
+## You Should Be Able To
+- explain the difference between the working directory, staging area, and commit history
+- create a repository with `git init`
+- stage a file and create a commit
 
-## 🧠 Why it exists
-You rarely want every file modification, broken script, or temporary debug log grouped into a single save point. The explicit `Staging Area` allows you to logically bundle related changes together into a single, comprehensive `commit`.
+## Key Ideas
+- The **working directory** is where you edit files.
+- The **staging area** is the set of changes selected for the next commit.
+- The **commit history** is the permanent record stored in `.git`.
+- A commit object stores a snapshot reference, parent reference, author and committer metadata, a message, and optionally a signature.
 
-## 📅 When to use it
-We will practice this core workflow by creating a local project entirely from scratch.
+## Step 1: Create A Repository
 
-**1. Initialize the Repository**
-Create a new directory and run `git init`. This creates the hidden `.git` folder, officially turning the directory into a Git repository.
 ```bash
 mkdir first-project
 cd first-project
 git init
 ```
 
-**2. Make local edits (Working Tree)**
-Create a single text file. At this phase, the file exists only in the Working Tree. It is untracked.
+## Step 2: Create A File In The Working Directory
+
 ```bash
 echo "Hello Git World! This is my first line of code." > index.txt
 ```
 
-**3. Move modifications to the Staging Area (`git add`)**
-Use `git status` to see untracked files, then explicitly add the file to the Index.
+At this point, the file exists on disk but is not part of a commit yet.
+
+## Step 3: Stage The File
+
 ```bash
-git status 
+git status
 git add index.txt
+git status
 ```
 
-**4. Record the Commit (`git commit`)**
-Executing `commit` permanently writes the staged changes into the Repository history. Git attaches your `user.name` and applies your cryptographically secure SSH signature.
+After `git add`, the file moves from "untracked" to "staged" in Git's view of the next commit.
+
+## Step 4: Create The Commit
+
 ```bash
-git commit -m "feat: added my first index file"
+git commit -m "feat: add first index file"
 ```
 
-## ✅ How to verify
+If signing is configured, Git signs the commit when it creates it.
 
-Read the repository's permanent ledger to verify the commit was saved:
+## Verify
+Run:
+
 ```bash
-git log
+git status
+git log --oneline -1
 ```
 
-You should see your commit hash, authorship, timestamp, and message. The local core workflow loop is complete!
+## Success Criteria
+- `git status` reports a clean working tree after the commit.
+- `git log --oneline -1` shows the new commit.
+- You can explain what `git add` changed before `git commit` was run.
 
 ***
-| [⬅️ Previous: Commit Signing](05-commit-signing.md) | [Next: Remotes and Cloning ➡️](07-remotes-and-cloning.md) |
+| [<- Previous: Enable Commit Signing](05-commit-signing.md) | [Next: Learn Remotes And Cloning ->](07-remotes-and-cloning.md) |
 | :--- | ---: |

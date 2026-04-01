@@ -1,63 +1,76 @@
-# 🔐 Setup SSH Authentication
+# Set Up SSH Authentication
 
 ***
-| [⬅️ Previous: Configure Identity](03-configure-identity.md) | [Next: Commit Signing ➡️](05-commit-signing.md) |
+| [<- Previous: Configure Identity](03-configure-identity.md) | [Next: Enable Commit Signing ->](05-commit-signing.md) |
 | :--- | ---: |
 ***
 
-**🎯 Learning Objective:** Learn how Public-Key Cryptography secures your connection to remote servers. You will generate an `ed25519` key pair, load it into your `ssh-agent`, and register it as an **Authentication Key** in GitHub.
+## Outcome
+Generate an SSH key pair, load it into `ssh-agent`, and register the public key in GitHub as an authentication key.
 
-## ⚙️ What it does
-Imagine needing a highly secure VIP badge to push code. You generate a paired cryptographic sequence: one key stays hidden on your local machine (`Private Key`), and you safely upload the other piece to the remote platform (`Public Key`).
+## You Should Be Able To
+- explain the difference between a private key and a public key
+- create an `ed25519` SSH key pair
+- use SSH to authenticate from your machine to GitHub
 
-```mermaid
-graph LR
-    A["Your Laptop<br/>(Private Key)"] -- "Authenticates" --> B(("GitHub<br/>(Public Key Registry)"))
-```
+## Key Ideas
+- The **private key** stays on your machine.
+- The **public key** can be shared safely.
+- GitHub uses the public key to verify that your machine is allowed to connect.
+- This step handles authentication. It does not sign commits yet.
 
-## 🧠 Why it exists
-Historically, you had to type your GitHub account password into the terminal for every `git push`. GitHub permanently deprecated password authentication in favor of Personal Access Tokens (PATs) and SSH Keys to prevent credential leakage. 
+## Step 1: Generate An SSH Key Pair
+Run:
 
-> [!TIP]
-> **Teacher Note: Why ed25519?** We strictly recommend the `ed25519` cryptographic algorithm instead of older `RSA`. It compiles instantly, uses fewer bits, and relies on an elliptic curve mathematically engineered to resist modern attack vectors.
-
-## 📅 When to use it
-You execute this sequence **once** per OS installation on a new machine.
-
-### Step 1: Generate the Key Pair
 ```bash
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
-Press **Enter** to accept the default output path (`~/.ssh/id_ed25519`). Press **Enter** again to skip the optional passphrase (unless preferred).
 
-### Step 2: Empower the SSH Agent
-For your system to seamlessly fetch the key without prompting you in the background, you must start the native `ssh-agent` utility and securely load your newly generated private key into its memory:
+Accept the default path `~/.ssh/id_ed25519`. Use a passphrase if possible. A passphrase protects the private key if someone gets access to your machine.
+
+## Step 2: Start `ssh-agent` And Load The Key
+Run:
+
 ```bash
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_ed25519
 ```
 
-### Step 3: Register the Public Key (Authentication)
-We must extract the un-secret half of your badge (`id_ed25519.pub`) and upload it to GitHub as an **Authentication** key.
+`ssh-agent` keeps the private key available for authentication during your shell session.
 
-1. Print the public payload in your terminal:
+## Step 3: Add The Public Key To GitHub
+Print your public key:
+
 ```bash
 cat ~/.ssh/id_ed25519.pub
 ```
-2. Copy the entire string (starts with `ssh-ed25519`).
-3. Navigate to **GitHub > Settings > SSH and GPG keys**.
-4. Click **New SSH key**. 
-5. Under **"Key type"**, explicitly ensure **Authentication Key** is selected. Paste the payload and save.
 
-## ✅ How to verify
+Then:
+1. copy the full output
+2. open **GitHub -> Settings -> SSH and GPG keys**
+3. click **New SSH key**
+4. select **Authentication Key**
+5. paste the public key and save
 
-Command your terminal to attempt an interactive Secure Shell handshake against GitHub's root node:
+## Verify
+Run:
+
 ```bash
+ssh-add -l
 ssh -T git@github.com
 ```
 
-If it successfully replies `Hi [username]! You've successfully authenticated...`, your identity is correctly mapped!
+You can also run the local repo check:
+
+```bash
+bash scripts/verify-setup.sh --check-github
+```
+
+## Success Criteria
+- `ssh-add -l` lists at least one loaded identity.
+- `ssh -T git@github.com` reports successful authentication.
+- You can explain that SSH authentication proves your machine can connect to GitHub, not that a commit is signed.
 
 ***
-| [⬅️ Previous: Configure Identity](03-configure-identity.md) | [Next: Commit Signing ➡️](05-commit-signing.md) |
+| [<- Previous: Configure Identity](03-configure-identity.md) | [Next: Enable Commit Signing ->](05-commit-signing.md) |
 | :--- | ---: |
