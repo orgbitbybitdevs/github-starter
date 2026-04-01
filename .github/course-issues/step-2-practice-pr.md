@@ -1,4 +1,4 @@
-# Step 2: Open your practice pull request
+# BitByBit Academy Step 3: Open your practice pull request
 
 This step gives you an auto-graded practice run before the final evaluation.
 
@@ -35,6 +35,9 @@ What `origin` points to in my template copy:
 - the file contains the required headings
 - the latest commit message is correct
 - the latest commit is signed
+
+Passing means you can complete the core GitHub flow on your own copy before the graded final.
+Failing means the workflow found a specific rule that still needs to be fixed.
 
 ## When You Finish
 1. wait for the workflow named **Practice Pull Request Check**

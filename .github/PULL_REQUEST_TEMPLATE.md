@@ -1,4 +1,4 @@
-## ✅ Evaluation Checklist
+## 🚀 BitByBit Academy Checklist
 - [ ] My branch is named `feature/practice-[username]` or `feature/evaluation-[username]`
 - [ ] This pull request targets `main`
 - [ ] I added the required file for this step

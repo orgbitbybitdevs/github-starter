@@ -30,17 +30,22 @@ jobs:
 
             const steps = {
               'course:step-1': {
-                title: 'Step 2: Open your practice pull request',
-                file: 'step-2-practice-pr.md',
+                title: 'BitByBit Academy Step 2: Verify commit signing',
+                file: 'step-2-signing-check.md',
                 labels: ['course', 'course:step-2']
               },
               'course:step-2': {
-                title: 'Step 3: Complete your final evaluation',
-                file: 'step-3-final-evaluation.md',
+                title: 'BitByBit Academy Step 3: Open your practice pull request',
+                file: 'step-2-practice-pr.md',
                 labels: ['course', 'course:step-3']
               },
               'course:step-3': {
-                title: 'Course complete',
+                title: 'BitByBit Academy Step 4: Complete your final evaluation',
+                file: 'step-3-final-evaluation.md',
+                labels: ['course', 'course:step-4']
+              },
+              'course:step-4': {
+                title: 'BitByBit Academy: Course complete',
                 file: 'step-4-complete.md',
                 labels: ['course', 'course:complete']
               }
@@ -66,7 +71,7 @@ jobs:
                 owner,
                 repo,
                 issue_number: context.payload.issue.number,
-                body: `Next step already exists: ${existingNext.html_url}`
+                body: `BitByBit Academy mentor note: your next step already exists here: ${existingNext.html_url}`
               });
               return;
             }
@@ -87,5 +92,5 @@ jobs:
               owner,
               repo,
               issue_number: context.payload.issue.number,
-              body: `Nice work. Your next step is ready: ${created.data.html_url}`
+              body: `BitByBit Academy mentor note: nice work. Your next step is ready: ${created.data.html_url}`
             });

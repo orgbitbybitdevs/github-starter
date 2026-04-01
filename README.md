@@ -1,6 +1,16 @@
 # 🚀 Git & GitHub Starter
 
-Git & GitHub Starter is a guided beginner course for setting up Git correctly and understanding the workflow behind everyday GitHub collaboration.
+BitByBit Academy presents a guided beginner course for setting up Git correctly and understanding the workflow behind everyday GitHub collaboration.
+
+## 🚀 START HERE (MANDATORY)
+If you only read one section before doing anything, read this one.
+
+1. Click **Use this template** and create your own repository copy.
+2. Open the **Actions** tab in your copy.
+3. Run **Initialize Interactive Course**.
+4. Open the first issue that BitByBit Academy creates for you.
+
+This is the fastest and clearest way to start the course correctly.
 
 ## 🗺️ Official Course Index
 This `README.md` is the single source of navigation for the course.
@@ -31,14 +41,14 @@ This repository is designed to be used as a GitHub template.
 7. Open a pull request in your copy of the repository and wait for GitHub Actions feedback.
 
 ## 🧠 Interactive Mode
-If you want a guided experience similar to GitHub Skills, use the interactive issue flow in your own template copy.
+Use the interactive issue flow in your own template copy for the full BitByBit Academy experience.
 
 [![Initialize Interactive Course](https://img.shields.io/badge/Start-Interactive%20Course-f97316?style=for-the-badge)](#initialize-interactive-course)
 
 The interactive mode does this:
 - creates the first course issue automatically
 - opens the next issue when you close the current one
-- gives you one practice pull request before the final evaluation
+- gives you incremental checkpoints before the final evaluation
 - uses GitHub Actions to grade practice and final pull requests
 
 ## ⚡ Quick Actions
@@ -68,10 +78,11 @@ In your own template copy on GitHub:
 4. open the issue that gets created automatically
 
 The guided issue sequence is:
-1. verify your local setup
-2. open a practice pull request
-3. complete the final evaluation
-4. receive the completion issue
+1. verify SSH authentication
+2. verify commit signing
+3. open a practice pull request
+4. complete the final evaluation
+5. receive the completion issue
 
 <a id="run-auth-check"></a>
 ## 🧪 Run The Authentication Check Now
@@ -128,6 +139,17 @@ Use this after module 05. It checks everything from the authentication check plu
 
 The scripts print the results directly in your terminal.
 
+## 🔍 What Each Action Validates
+BitByBit Academy uses different checks for different learning goals.
+
+- **Authentication Check** validates Git installation, identity, SSH key material, `ssh-agent`, and GitHub SSH access.
+- **Full Setup Check** validates everything in the authentication check plus SSH commit-signing configuration.
+- **Practice Pull Request Check** validates your branch naming, target branch, changed file, commit message, and signed commit.
+- **Final Evaluation Autograding** validates the graded submission file, branch naming, target branch, commit message, signed commit, and pull request structure.
+
+Passing means your current step meets the technical rules for that stage.
+Failing means the workflow found a concrete requirement that still needs to be fixed.
+
 <a id="see-pr-results"></a>
 ## ✅ See Your PR Results
 When you open a course pull request in your own template copy, GitHub runs the grading workflow automatically.
@@ -141,6 +163,11 @@ You should see one of these workflows:
 - **Final Evaluation Autograding**
 
 Open the workflow result to see the detailed `PASS` or `FAIL` output from the grader.
+
+BitByBit Academy also posts mentor-style feedback on the pull request so the learner sees:
+- what the workflow checked
+- whether the current step passed
+- where to look next if it failed
 
 ## 🏁 By The End Of This Course
 You should be able to:

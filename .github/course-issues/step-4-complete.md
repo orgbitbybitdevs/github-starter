@@ -1,4 +1,4 @@
-# Course complete
+# BitByBit Academy: Course complete
 
 You completed the guided interactive path for this repository.
 
@@ -21,4 +21,4 @@ Create a small project of your own and use the same workflow:
 - signed push
 - pull request
 
-Nice work.
+Nice work. You completed the interactive BitByBit Academy Git starter path.

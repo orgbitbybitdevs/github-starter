@@ -28,9 +28,10 @@ jobs:
 
             const labels = [
               { name: 'course', color: '1d76db', description: 'Interactive course issue' },
-              { name: 'course:step-1', color: '0e8a16', description: 'Interactive course step 1' },
-              { name: 'course:step-2', color: '5319e7', description: 'Interactive course step 2' },
-              { name: 'course:step-3', color: 'fbca04', description: 'Interactive course step 3' },
+              { name: 'course:step-1', color: '0e8a16', description: 'Interactive course step 1: authentication' },
+              { name: 'course:step-2', color: '1d9b73', description: 'Interactive course step 2: signing' },
+              { name: 'course:step-3', color: '5319e7', description: 'Interactive course step 3: practice PR' },
+              { name: 'course:step-4', color: 'fbca04', description: 'Interactive course step 4: final evaluation' },
               { name: 'course:complete', color: '1d9b73', description: 'Interactive course completed' }
             ];
 
@@ -54,7 +55,7 @@ jobs:
               }
             }
 
-            const firstTitle = 'Step 1: Verify your local setup';
+            const firstTitle = 'BitByBit Academy Step 1: Verify SSH authentication';
             const existingIssues = await github.paginate(github.rest.issues.listForRepo, {
               owner,
               repo,

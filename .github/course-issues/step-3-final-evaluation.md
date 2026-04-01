@@ -1,4 +1,4 @@
-# Step 3: Complete your final evaluation
+# BitByBit Academy Step 4: Complete your final evaluation
 
 You are now ready for the graded final task.
 
@@ -21,6 +21,9 @@ Complete the final evaluation in your own template copy.
 - the file contains the required reflection sections
 - the latest commit message is correct
 - the latest commit is signed
+
+Passing means your final submission satisfies the technical requirements of the course.
+Failing means the grader found a concrete issue you should fix and resubmit.
 
 ## When You Finish
 1. wait for the workflow named **Final Evaluation Autograding**
