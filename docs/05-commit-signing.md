@@ -1,31 +1,31 @@
-# Enable Commit Signing
+# 🖋️ Enable Commit Signing
 
 ***
 | [<- Previous: Set Up SSH](04-ssh-setup.md) | [Next: Make Your First Commit ->](06-first-commit.md) |
 | :--- | ---: |
 ***
 
-## Outcome
+## 🎯 Outcome
 Configure Git to sign commits with SSH and understand what GitHub checks before showing the `Verified` badge.
 
-## You Should Be Able To
+## ✅ You Should Be Able To
 - explain the difference between authentication and signing
 - configure Git for SSH commit signing
 - explain what GitHub verifies when it marks a commit as `Verified`
 
-## Key Ideas
+## 🧠 Key Ideas
 - Authentication proves your machine can connect to GitHub.
 - Signing proves a commit contains a cryptographic signature from a registered signing key.
 - A signed commit is not the same thing as a pushed commit. You can push unsigned commits, and you can sign commits before pushing them.
 
-## What GitHub Verifies
+## 🛡️ What GitHub Verifies
 GitHub can mark a commit as `Verified` when:
 
 1. the commit contains a valid cryptographic signature
 2. the signature matches a public signing key registered to the account
 3. the commit metadata is consistent enough for GitHub to attribute the signature correctly
 
-## Step 1: Add Your Public Key As A Signing Key
+## 1️⃣ Add Your Public Key As A Signing Key
 You can reuse the same SSH public key you created in the previous module.
 
 1. print the public key:
@@ -39,7 +39,7 @@ cat ~/.ssh/id_ed25519.pub
 4. select **Signing Key**
 5. paste the public key and save
 
-## Step 2: Configure Git To Sign Commits
+## 2️⃣ Configure Git To Sign Commits
 Run:
 
 ```bash
@@ -48,7 +48,7 @@ git config --global user.signingkey ~/.ssh/id_ed25519.pub
 git config --global commit.gpgsign true
 ```
 
-## Verify
+## 🧪 Verify
 Run:
 
 ```bash
@@ -65,7 +65,7 @@ bash scripts/verify-setup.sh
 
 After you push a signed commit to GitHub, inspect the latest commit in the GitHub UI and confirm that it shows `Verified`.
 
-## Success Criteria
+## 🏁 Success Criteria
 - `gpg.format` is set to `ssh`.
 - `user.signingkey` points to your public SSH key.
 - `commit.gpgsign` is set to `true`.

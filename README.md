@@ -1,25 +1,25 @@
-# Git & GitHub Starter
+# 🚀 Git & GitHub Starter
 
 Git & GitHub Starter is a guided beginner course for setting up Git correctly and understanding the workflow behind everyday GitHub collaboration.
 
-## Official Course Index
+## 🗺️ Official Course Index
 This `README.md` is the single source of navigation for the course.
 
 - `README.md`: course map and entrypoint
 - `docs/`: lesson content
 - `START_HERE.md`: legacy redirect for older links
 
-## Prerequisites
+## 🧰 Prerequisites
 - Basic terminal usage
 - A free GitHub account
 
-## How To Use This Repo
+## ▶️ How To Use This Repo
 1. Start with module 01 and follow the modules in order.
 2. After modules 02 to 05, run `bash scripts/verify-setup.sh` to check your local setup.
 3. Complete the final evaluation in module 10 on a feature branch.
 4. Open a pull request and wait for GitHub Actions feedback.
 
-## Course Map
+## 📚 Course Map
 1. [docs/01-introduction.md](docs/01-introduction.md) - Understand version control, Git, and GitHub.
 2. [docs/02-install-git.md](docs/02-install-git.md) - Install Git and set `main` as the default branch name for new repositories.
 3. [docs/03-configure-identity.md](docs/03-configure-identity.md) - Configure author identity and separate it from authentication and signing.
@@ -31,7 +31,7 @@ This `README.md` is the single source of navigation for the course.
 9. [docs/09-troubleshooting.md](docs/09-troubleshooting.md) - Diagnose common Git, SSH, signing, and remote errors.
 10. [docs/10-final-evaluation.md](docs/10-final-evaluation.md) - Complete a graded GitHub Flow exercise with automated checks.
 
-## By The End Of This Course
+## 🏁 By The End Of This Course
 You should be able to:
 - install and verify Git on your machine
 - configure `user.name`, `user.email`, and default branch settings
@@ -41,7 +41,7 @@ You should be able to:
 - clone repositories, inspect remotes, and explain `origin` and `upstream`
 - complete a branch-based pull request workflow that passes automated grading
 
-## Automation In This Repo
+## 🤖 Automation In This Repo
 - `scripts/verify-setup.sh` checks local Git, SSH, and signing configuration.
 - `.github/workflows/autograding.yml` runs the final evaluation checks on pull requests.
 - `scripts/grade-pr.sh` enforces the final evaluation rules.
