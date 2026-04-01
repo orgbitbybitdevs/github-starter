@@ -90,6 +90,8 @@ If the remote starts with `https://github.com/`, switch it to SSH:
 git remote set-url origin git@github.com:username/repo.git
 ```
 
+In this course, `origin` should usually point to your own copy of the template repository.
+
 ## 🌿 Problem: `src refspec main does not match any`
 This usually means you do not have a commit on the branch yet, or you are pushing the wrong branch name.
 

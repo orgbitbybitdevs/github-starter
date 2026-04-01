@@ -18,8 +18,12 @@ Know when to use a branch, when to use a fork, and what `origin` and `upstream` 
 - A **fork** is a separate repository created on GitHub under another account or organization.
 - In a fork workflow, `origin` usually points to your fork and `upstream` points to the original repository.
 
+For the main course flow, you do not need a fork. Because this repo is a template, your personal copy already gives you a safe place to practice branches and pull requests.
+
 ## 🌿 When To Use A Branch
 Use a branch when you already have write access to the repository and want to isolate work from `main`.
+
+That is the default workflow for this course once you create your own copy from the template.
 
 Example:
 
@@ -76,6 +80,7 @@ upstream  git@github.com:original-owner/the-repo.git (push)
 ## 🏁 Success Criteria
 - You can explain why a branch stays inside one repository while a fork creates a second repository.
 - You can explain what `origin` and `upstream` each point to in a fork workflow.
+- You can explain why this course uses a template copy plus branches instead of asking every learner to work in the academy repository.
 - You can add `upstream` without deleting `origin`.
 
 ***

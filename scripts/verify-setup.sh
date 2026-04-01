@@ -142,6 +142,7 @@ if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     warn "No 'origin' remote is configured in this repository."
   elif [[ "$origin_url" =~ ^git@github\.com: ]]; then
     pass "Origin remote uses SSH: $origin_url"
+    echo "      In this course, origin should usually point to your own template copy."
   else
     warn "Origin remote is not using SSH: $origin_url"
   fi

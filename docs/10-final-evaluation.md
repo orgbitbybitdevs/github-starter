@@ -6,7 +6,7 @@
 ***
 
 ## 🎯 Outcome
-Demonstrate a complete beginner GitHub Flow: create a branch, add a file, create a signed commit, push it, and open a pull request that passes automated grading.
+Demonstrate a complete beginner GitHub Flow inside your own copy of this template: create a branch, add a file, create a signed commit, push it, and open a pull request that passes automated grading.
 
 ## ✅ You Should Be Able To
 - create a feature branch from `main`
@@ -24,8 +24,10 @@ Your submission must follow all of these rules:
 4. the latest commit message must be `docs: submit final evaluation`
 5. the latest commit must be signed
 
+This evaluation happens in your own repository copy created from the template. Do not open the pull request in the academy source repository.
+
 ## 1️⃣ Create The Branch
-From the root of the repository, run:
+From the root of your own repository copy, run:
 
 ```bash
 git switch -c feature/evaluation-[username]
@@ -46,7 +48,7 @@ What `git add` does:
 Authentication vs signing:
 - Replace this line with your explanation.
 
-What `origin` points to in this repository:
+What `origin` points to in your copy of this template:
 - Replace this line with your explanation.
 ```
 
@@ -70,7 +72,7 @@ git push -u origin feature/evaluation-[username]
 ```
 
 ## 5️⃣ Open The Pull Request
-1. open the repository on GitHub
+1. open your own repository copy on GitHub
 2. click **Compare & pull request**
 3. confirm that the base branch is `main`
 4. create the pull request
@@ -83,6 +85,8 @@ GitHub Actions will verify:
 - the file contains the required reflection sections
 - the latest commit message is correct
 - the latest commit contains a cryptographic signature
+
+Because this repository is a template, the workflow runs inside your copy after GitHub copies the `.github` and `scripts/` files.
 
 ## 👀 Final Manual Check
 After the workflow passes, open the latest commit on GitHub and confirm that it shows `Verified`.

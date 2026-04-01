@@ -19,7 +19,7 @@ require_env() {
   fi
 }
 
-echo "=== BitByBit Academy Autograding ==="
+echo "=== BitByBit Template Autograding ==="
 echo "Evaluating the final course submission..."
 
 require_env HEAD_REF
@@ -81,7 +81,7 @@ fi
 for required_heading in \
   'What `git add` does:' \
   'Authentication vs signing:' \
-  'What `origin` points to in this repository:'; do
+  'What `origin` points to in your copy of this template:'; do
   if ! grep -Fq "$required_heading" "$student_file"; then
     fail "Submission file is missing the required section '$required_heading'."
   fi

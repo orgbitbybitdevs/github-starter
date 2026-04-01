@@ -6,7 +6,7 @@
 ***
 
 ## 🎯 Outcome
-Understand what a remote is, why `origin` exists, and how `clone`, `fetch`, and `pull` relate to each other.
+Understand what a remote is, why `origin` exists, and how `clone`, `fetch`, and `pull` relate to each other in your own copy of this template.
 
 ## ✅ You Should Be Able To
 - explain that a remote is a stored URL plus a local alias
@@ -20,14 +20,16 @@ Understand what a remote is, why `origin` exists, and how `clone`, `fetch`, and 
 - `git pull` is usually `fetch` followed by integrating those changes into your current branch.
 
 ## 📥 Clone A Repository
-Copy an SSH URL from GitHub and run:
+For this course, you should usually clone your own template-generated repository, not the academy source repository.
+
+Copy the SSH URL of your own repository and run:
 
 ```bash
 git clone git@github.com:username/repo-name.git
 cd repo-name
 ```
 
-After cloning, Git stores the source URL under the alias `origin`.
+After cloning, Git stores the source URL under the alias `origin`. In this course, `origin` should usually point to your own copy of the template.
 
 ## 🔎 Inspect The Remote
 Run:
@@ -66,7 +68,7 @@ git remote -v
 ## 🏁 Success Criteria
 - You can explain `origin` as a local nickname for a remote URL.
 - You can explain why `fetch` is safer when you want to inspect changes first.
-- You can identify the repository URL stored under `origin`.
+- You can identify that `origin` in this course normally points to your own repository copy.
 
 ***
 | [<- Previous: Make Your First Commit](06-first-commit.md) | [Next: Branches, Forks, Origin, And Upstream ->](08-fork-origin-upstream.md) |
